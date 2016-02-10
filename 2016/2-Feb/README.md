@@ -42,7 +42,6 @@ Now we could query with the following on the server side:
 ```
 In Graph QL, all fields we define are optional. If we need to make a field required,
 we need to mention it explicitely. for example: _id: { type: new GraphQLNonNull(GraphQLString) }
-----
 
 
 
