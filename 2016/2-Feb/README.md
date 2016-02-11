@@ -43,6 +43,64 @@ Now we could query with the following on the server side:
 In Graph QL, all fields we define are optional. If we need to make a field required,
 we need to mention it explicitely. for example: _id: { type: new GraphQLNonNull(GraphQLString) }
 
+2/10
+----
+
+#### Relay: a javascript framework for building data-driven react applications.
+
+* Declare you data requirements using GraphQL and Relay takes care of how and when 
+to fetch the data.
+
+* With a heavy GraphQl influence, Relay only fetches queries into efficient network requests
+and give you the ability to mutate data both on the client and server side.
+
+* The primary way to declare data requirements is with `Relay.Container` which is a higher order
+React component that lets React components encode their data requirements. Those requirements dictate 
+the data needed and Relay just guarantees that the data is available before rendering.
+
+* The root of a query is defined by a Route. 
+* Relay separates mutations from queries, thus giving a lot of flexibility to the programmer to 
+configure the default network via injection.
+
+
+#### MongoDB aggregation Framework: (best thought of as a pipeline).
+
+```
+  	   <--  stages ----->
+Collection -> ... -> ... -> Output
+
+```
+The stages (data processing unit) perform different operations on the data. You can literally think of it as an assembly line where each stage takes as an input what another stage has outputted before.
+
+The data in this case are streams of documents. 
+* Inside the stages we have tunable components that we can control to get to our desired output.
+
+In another words, stages: general process & parameters: for precision.
+(we may repeat the same stage in multiple steps in the process before the final output )
+
+Familiar Operations (stages):
+- match (Find)
+- project
+- sort
+- skip
+- limit
+
+In most cases we would want to use the query method .aggregate() to aggregate the pipeline passed to it.
+
+> A pipeline in this case is an array of documents (stages)
+
+```
+db.{{collection}}.aggregate([
+	{ $match: { founded_year: 2014 }},
+	{ $project: {
+		_id: 0,
+		name: 1,
+	}}
+])
+```
+We have two pipelines in the above example.
+
+![Aggegation pipeling example](http://res.cloudinary.com/masteryoperation/image/upload/v1455165997/aggregationPipeline_cbvi4o.jpg)
 
 
 
