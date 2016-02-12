@@ -102,6 +102,19 @@ We have two pipelines in the above example.
 
 ![Aggegation pipeling example](http://res.cloudinary.com/masteryoperation/image/upload/v1455165997/aggregationPipeline_cbvi4o.jpg)
 
+2/11
+----
+Accumulators involve calculating values in multiple documents.
+
+Unwind:
+When working with array fields it is sometimes necessary to add one or more unwind stages.
+Unwind allows us to take elements that have array fields and turn them into input documents
+such that there is one output document for each element in the array.
+
+Array expressions: ** the double $$ represents a variable defined whithin the expression we are working with.
+
+
+
 
 
 
