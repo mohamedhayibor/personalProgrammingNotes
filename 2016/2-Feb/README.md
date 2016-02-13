@@ -120,13 +120,14 @@ Queues: FIFO: first in - first out
 Stacks: LIFO: last in - first out
 ******
 Fisher-Yates ES6
+```js
 "use strict";
 // simple fisher yates implementation
 const shuffle = (deck) => {
   let randomizedDeck = [];
   let array = deck;
   while ( array.length !== 0) {
-  	let rIndex = Math.floor(array.length * Math.random());
+    let rIndex = Math.floor(array.length * Math.random());
     randomizedDeck.push(array[rIndex]);
     array.splice(rIndex, 1)
   }
@@ -136,7 +137,7 @@ const shuffle = (deck) => {
 const deck = [1,2,3,4,5,6,7];
 // Testing
 console.log(shuffle(deck));
-
+```
 
 
 
