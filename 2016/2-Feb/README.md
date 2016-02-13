@@ -113,8 +113,29 @@ such that there is one output document for each element in the array.
 
 Array expressions: ** the double $$ represents a variable defined whithin the expression we are working with.
 
+02/12
+---
 
+Queues: FIFO: first in - first out
+Stacks: LIFO: last in - first out
+******
+Fisher-Yates ES6
+"use strict";
+// simple fisher yates implementation
+const shuffle = (deck) => {
+  let randomizedDeck = [];
+  let array = deck;
+  while ( array.length !== 0) {
+  	let rIndex = Math.floor(array.length * Math.random());
+    randomizedDeck.push(array[rIndex]);
+    array.splice(rIndex, 1)
+  }
+  return randomizedDeck;
+};
 
+const deck = [1,2,3,4,5,6,7];
+// Testing
+console.log(shuffle(deck));
 
 
 
