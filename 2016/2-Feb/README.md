@@ -138,7 +138,30 @@ const deck = [1,2,3,4,5,6,7];
 // Testing
 console.log(shuffle(deck));
 ```
+2/13
+----
+Binding data, process:
+1. Select the elements first
+2. Use data to bing the data on the elements
+3. Change the attribute or style of the element by attr or style
+4. callback function
+exple:
+```
+d3.selectAll("div").data([25,30,35,40,45])
+	.style("width", function(i) {
+		return i;
+	})
+```
 
+Adding some animation vars: transition, duration
+```
+d3.selectAll("div")
+	.data([25,30,35,40,45])
+	.transition()
+	.duration(3 * 1000)
+	.style("width", function (i) { return i + "px"; })
+```
+For .entry() and .exit() methods help us when it comes to more complex transitions.
 
 
 
