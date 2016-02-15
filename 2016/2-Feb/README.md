@@ -164,6 +164,19 @@ d3.selectAll("div")
 For .entry() and .exit() methods help us when it comes to more complex transitions.
 
 
+02/14
+----
+Cross-origin resource sharing (CORS - W3C spec):
+
+Enables truly open across domain boundaries. (server / client side)
+Helpful when you serve public content for universal Javascript/browser access.
+
+> JQuery's $.ajax() method can be used to make both regular xhr and CORS requests.
+
+![cors](http://res.cloudinary.com/masteryoperation/image/upload/v1455510562/cbp_fxiijw.png)
+
+
+
 
 
 
