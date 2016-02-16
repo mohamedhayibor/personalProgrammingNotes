@@ -175,7 +175,43 @@ Helpful when you serve public content for universal Javascript/browser access.
 
 ![cors](http://res.cloudinary.com/masteryoperation/image/upload/v1455510562/cbp_fxiijw.png)
 
+---
+02/15
+----
+bit of git:
 
+git checkout *branch*
+* to move to a specific branch or master
+
+git pull origin master
+* git pull combines `git fetch` and `git merge`
+with fetch: commits are stored as remote branch allowing you to review the changes before merging.
+
+* git checkout -b *name of branch* 
+will create a new branch from the master for you to mess with seperately
+
+
+* git add -u 
+will remove the deleted files from the version control
+
+* git push origin *name of branch*
+to push the branch to the remote repo
+
+Edge case: if you are out of sync with the brach just pull:
+* git pull origin *branch*
+
+Tracking remote branches: git branch -r
+
+To be 100% sync with deleted remote branches: git fetch -p
+
+To check to see what branches are merged and not merged into master: git branch --merged
+
+To see the branches that are not merged yet: git branch --no-merged
+
+
+The --no-ff flag prevents git merge from executing a `fast-forward`
+
+To delete a side branch: git branch -D *branch*
 
 
 
