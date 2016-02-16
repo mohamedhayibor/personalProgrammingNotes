@@ -208,20 +208,86 @@ To check to see what branches are merged and not merged into master: git branch 
 
 To see the branches that are not merged yet: git branch --no-merged
 
-
 The --no-ff flag prevents git merge from executing a `fast-forward`
 
 To delete a side branch: git branch -D *branch*
 
+2/16
+----
 
+Optimizing the Critical Rendering Path (CRP): prioritizing the display of content that relates to the current user action.
 
+> helps when it comes to the user's perception in how fast your website is.
 
+Before the browser can render the page it needs to construct the DOM and the CSSOM trees.
+Thus we need to deliver the HTML and CSS as quickly as possible. 
 
+Bytes -> characters -> tokens -> nodes -> object model
 
+* The DOM and CSSDOM are independent data structures.
 
+![ chrome rendering ](http://res.cloudinary.com/masteryoperation/image/upload/v1455646739/browser_rendering_jbeqd7.jpg)
+credit to developers.google.com
 
+> same process with  CSSOM with the tweak that the css rules "cascade down" and that the styles are applied recursively.
 
+The CSSDOM and DOM trees are combined into a render tree that dictates how the page displays.
 
+* `visibility: hidden`  !== `display: none`
+The first makes the element invisible but still occupies space
+The second removes the element entirely from the render tree.
 
+After the render tree is set -> the layout stage kicks in.
 
+The output of the layout is a "box model": All relative measures are converted to absolute pixels.
+Then we get to the final stage called "painting" or "rasterizing"
+
+If the DOM or CSSDOM is changed, the process is repeated to figure out which pixels need to be re-rendered.
+
+Optimization in the critical rendering path is the minimization the total time spent in the 5 steps:
+1. Process HTML markup -> DOM
+2. Process CSS markup -> CSSOM
+3. DOM + CSSOM -> Render Tree
+4. Run Layout on the render tree to compute the geometry of each node
+5. Paint individual nodes to the screen.
+
+> achieve higher refresh rate for interactive content.
+
+###### Render blocking CSS:
+
+Both HTML and CSS are render blocking resources.
+* Keep it lean to deliver it as quickly as possible
+* Use media types and queries to unblock CSS rendering.
+
+> Regardless of blocking or non-blocking behavior, all css resources are downloaded by the browser.
+
+Exple of media query: `<link rel="stylesheet" href="print.css" media="print">`
+
+> Implementation of media queries have big impact on the critical rendering path.
+
+JS also blocks DOM construction.
+Solution: make your JS async.
+1. DOM construction is paused at a script tag until it has executed
+2. JS can modify both the DOM and CSSOM
+3. JS execution is delayed until the CSSOM is ready
+
+> We mark our JS script tag async like: `<script src="app.js" async></script>`
+Adding the async tag tells the browser not to block the DOM construction.
+
+On dev tools -> network -> navigation timing we can measure our CRP.
+
+* domLoading: the browser starts parsing the first bytes of HTML
+* domInteractive: when finished parsing HTML and DOM construction ready.
+* domContentLoaded: DOM is ready and no stylesheets blocking JS execution.
+* domComplete: all processing is done.
+* loadEvent: an onLoad event is fired which can trigger additional application logic.
+
+Rules of thumbs: Getting the browser to paint as soon as possible
+
+* in-lined JS is also parser blocking.
+
+Goal: Minimize these
+* crytical Resource: resource that may block initial rendering of the page.
+* critical Path length: number of roundtrips || the total time required to fetch all critical resources.
+* critical Bytes: total amount of bytes required to get the first rendering of the page.
 
