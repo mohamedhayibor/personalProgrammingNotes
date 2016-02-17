@@ -290,4 +290,17 @@ Goal: Minimize these
 * crytical Resource: resource that may block initial rendering of the page.
 * critical Path length: number of roundtrips || the total time required to fetch all critical resources.
 * critical Bytes: total amount of bytes required to get the first rendering of the page.
+* 
+
+2/17
+----
+
+MongoDB types of replica sets nodes:
+* Regular
+* Arbiter (just there for voting purposes)
+* Delayed / Regular (Desaster recovery node)
+* Hidden (never the primary)
+
+If both writes and reads are to the primary => You get strong consistency. (You won't read stale data).
+If not you might get eventual consistency.
 
