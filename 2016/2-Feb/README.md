@@ -304,3 +304,16 @@ MongoDB types of replica sets nodes:
 If both writes and reads are to the primary => You get strong consistency. (You won't read stale data).
 If not you might get eventual consistency.
 
+02/18
+----
+
+A heinsenbug: a software bug that seems to disappear or alter its behavior when one attempts to study it. (name inspired by the Heinsenberg observer effect)
+
+Simple software principles:
+SOLID "Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion"
+
+* S : Single Responsibility Principle (SRP): a module or function should have responsibility over a single part of the software functionality.
+* O : Open/Closed principle (OCP): modules, functions... should be open for extension but closed for modification.
+* L : Liskov substitution principle (LSP): If S is a subtype of T on a computer software, T may be replaced with S without altering (correctness, task performed)
+* I : Interface segregation principle (ISP): (no client should be forced to depend on methods it does not use)
+* D : Dependency inversion principle (DIP): High-level modules should not depend on low-level modules. Abstraction should not depend on details. (All should depend on abstractions.)
