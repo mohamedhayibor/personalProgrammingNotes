@@ -317,3 +317,19 @@ SOLID "Single responsibility, Open-closed, Liskov substitution, Interface segreg
 * L : Liskov substitution principle (LSP): If S is a subtype of T on a computer software, T may be replaced with S without altering (correctness, task performed)
 * I : Interface segregation principle (ISP): (no client should be forced to depend on methods it does not use)
 * D : Dependency inversion principle (DIP): High-level modules should not depend on low-level modules. Abstraction should not depend on details. (All should depend on abstractions.)
+* 
+
+2/19
+----
+Layering: For each software component, count the number of other components it relies on. (The metric of how complex the component is)
+
+ORM: Object Relational Mapping: a programming technique for converting data between incompatible type systems in Object-oriented programming languages.
+UML: Unified Modeling Language: a modeling language to provide a standard to visualize the design of system.
+
+###### List data structure:
+an abstract data type that represents an ordered sequence of values, where the same value may occur more than once.
+> implemented with either linked list or array (dynamic, variable length)
+
+Linked list: a linear collection of data elements (connected through pointers): [integer, link to the next node]
+
+Doubly linked list: each node contains, besides the next node link, a second link pointing to the previous node in the sequence.
