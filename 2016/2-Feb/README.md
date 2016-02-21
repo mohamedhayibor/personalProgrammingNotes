@@ -333,3 +333,64 @@ an abstract data type that represents an ordered sequence of values, where the s
 Linked list: a linear collection of data elements (connected through pointers): [integer, link to the next node]
 
 Doubly linked list: each node contains, besides the next node link, a second link pointing to the previous node in the sequence.
+
+2/20
+----
+
+popular topics in CS: 
+
+#### Sorting:
+* Merge Sort
+* Quick Sort
+* Bucket Sort
+* Heap Sort
+* Counting Sort
+
+#### Search:
+* Binary search: in linear data structures: O(log2N)
+* Depth/Breadth First Search (DFS / BFS)
+> used in search engines, artificial intelligence, finding shortest paths
+
+#### Hashing:
+
+Hash lookup is a technique used to find appropriate data by key or ID.
+The data structure is called Hash-Map, Hash-Table or dictionary that maps keys into values.
+
+> Used in routers to store IP address
+
+#### Dynamic Programming:
+A method for solving complex problem by breaking it down into simpler subproblems. Then solving the subproblems, remembering their results and using them we make our way to solve the complex problem quickly. (In another words remembering stuff to save time later)
+
+###### 5 easy steps to DP:
+1. define subproblems
+2. guess (part of solution)
+3. relate subproblem solutions
+4. Recurse Memoize (acyclic topo order) or build DP table bottom up
+5. Solve the original problem
+
+
+#### Exponentiation by squaring (Binary exponentiation):
+a general method for fast computation of large integer powers of a number in O(log2N) 
+* exple: calculating 2^32 in 5 steps
+> used in RSA encryption, calculation of large numbers
+
+
+#### String Matching and parsing
+
+KMP Algorithm (Knuth-Morris-Pratt), string matching matching a short patter in a long string.
+> exple: Ctrl+F to match pattern in whole document
+
+Regular expression (string parsing)
+> used heavily on url routing
+
+
+#### Primality Testing algorithms
+exple: Sieve of Eratosthenes (deterministic): for any number n, incrementally testing up to sqrt(n) (deterministic)
+
+#### Debugging: 
+1. Keep record of what you tried
+2. Reconsidder assumptions
+3. Debug code, not comments
+4. Get help or try to explain how the code works
+5. Take a break for fresh eyes
+
