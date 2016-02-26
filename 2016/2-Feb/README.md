@@ -394,3 +394,40 @@ exple: Sieve of Eratosthenes (deterministic): for any number n, incrementally te
 4. Get help or try to explain how the code works
 5. Take a break for fresh eyes
 
+02/26
+----
+
+flow => a typechecking for Javascript. Helps you mitigate subtle bugs through static analysis and type annotations.
+
+ /* @flow */ is required on top of any snippets of code we want to type check.
+ 
+ Flow is able to infer the types within the snippet, so we don't have to always annotate the types.
+
+
+ * Flow requires that we annotate for functions that are imported from a module.
+
+ * Flow protects us from nullable types (null) (will fail at runtime)
+
+ * Flow also gives us the option to specify the type of primitive within the array. (ex: Array: <number>)
+
+
+Using the flow server:
+
+* using the `flow` command with a running server, eliminates the overhead of having to recheck all files.
+* `flow stop` will stop the flow server.
+* `flow check --all` allows to check all snippets whether or not they have /* @flow */
+
+In weak mode, flow will make less inferences => /* @flow weak */
+
+* any is the annotation for ultimate dynamic typing
+
+
+Flow's limitations:
+* Object.assign, solution:
+```
+if(!Object.assign) {
+	Object.assign = require('object-assign');
+}
+```
+* doesn't allow class instances to be extended at runtime.
+* module files
