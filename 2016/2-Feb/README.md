@@ -426,3 +426,79 @@ if(!Object.assign) {
 ```
 * doesn't allow class instances to be extended at runtime.
 * module files
+
+02/28
+----
+
+npm i babel-preset-es2015 babel-preset-react --save : can be written as
+npm i babel-preset-{es2015,react} -D
+
+> -D == --save-dev
+
+Features from ES6:
+- property initializers: `=>` binds the context
+- decorators `@DragDropContext(HTML5Backend)`: allow us to attach functionality to classes and their methods.
+- Object rest/spread, exple `const {a, b, ...props } = this.props : allows us to extract properties easily.
+
+
+From Babel:
+* resolve: allow us to import without an extension
+* loaders: ['babel?cacheDirectory'] => parses only app files.
+
+Babel has 2 types of plugins:
+* syntax: to parse additional syntax
+* transform: apply transformations
+
+To consume plugins, babel support presets. A preset is an npm module that help us export the different Babel functionalities and configurations. (pulling dependencies you need and then expose them through standard Node.js interface)
+
+> useful: if you want to share the same set of functionalities across multiple projects.
+
+
+custom preset examples:
+```
+module.exports = {
+	"presets": [
+		require('babel-plugin...'),
+		require('babel-plugin-syntax...'),
+		...
+	]
+}
+
+```
+
+It is easy to use Babel's transpiled feartures by renaming webpack.config.js to webpack.config.babel.config.js
+
+Webpack:
+* Webpack loaders are evaluated from right to left and from bottom to top.
+
+
+Webpack is somewhat flexible in the sense that you can pass:
+
+* query string example:
+```
+{
+	test: /\.jsx$/,
+	loaders: [
+		'babel?cacheDirectory,preset[]react,preset[]es2015,preset[]survivejs-kanban'
+	],
+	include: PATHS.app
+}
+```
+
+* loader query fields: 
+```
+{
+	test: /\.jsx?$/,
+	loader: 'babel',
+	query: {
+		cacheDirectory: true,
+		presets: ["react", "es2015", "survivejs-kanban"]
+	}
+	include: PATHS.app
+
+}
+```
+
+
+
+
