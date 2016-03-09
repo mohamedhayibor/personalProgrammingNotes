@@ -38,3 +38,13 @@ Decorators provide us simple means to annotate our components.
 
 @DropTarget allows a component to receive components annotated with @DragSource.
 DropTarget triggers as we perform actual logic based on the components.
+
+3/8
+-----
+
+Algebraic properties in CS:
+* Associative: grouping doesn't matter
+* commutative: order doesn't matter
+* idempotent: duplicates don't matter
+* Identity: this value doesn't matter
+* Zero: other values don't matter
