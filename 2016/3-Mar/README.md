@@ -48,3 +48,18 @@ Algebraic properties in CS:
 * idempotent: duplicates don't matter
 * Identity: this value doesn't matter
 * Zero: other values don't matter
+
+03/09
+------
+
+Quick dive into redux (reducer type, flux implementation):
+
+1. Specify the mutations you want to happen with plain objects called actions.
+2. You write a special function (reducer) to decide how every action transforms the entire application state.
+
+Principles:
+* Single source: the whole state of the application is stored in an object tree within a single store.
+* Read only: the way to mutate state is by emitting an action.
+* functional: changes made with pure functions (reducers).
+
+> you can send actions to the store with store.dispatch() || bindActionCreators() to automatically bind many action creators to a dispatch() function.
