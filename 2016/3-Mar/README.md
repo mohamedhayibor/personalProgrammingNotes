@@ -63,3 +63,58 @@ Principles:
 * functional: changes made with pure functions (reducers).
 
 > you can send actions to the store with store.dispatch() || bindActionCreators() to automatically bind many action creators to a dispatch() function.
+
+03/10
+------
+
+ES6 Array methods (9):
+.from() | .of() | .copyWithin() | .fill() | .find() | .findIndex() | .keys() | .enties() | .values()
+
+* .from() transforms arraylike and iterator objects into arrays:
+
+```
+
+
+```
+
+* .of() creates a new Array instance with a variable number (regardless of type):
+
+```
+
+```
+
+* .copyWithin(indices), like the name implies, returns an array with copies within the array depending (starting, end indices):
+
+```
+
+```
+
+* .fill(value), fills array with a value depending on start, end indices:
+
+```
+
+```
+
+* .find(callback), returns a value that satifies callback or undefined:
+
+```
+
+```
+
+* .findIndex(callback), returns index of value that satifies callback or -1:
+
+```
+
+```
+
+* Array.{ keys, entries, values } returns a new Array iterator:
+
+```
+
+```
+
+* .contains(value), checks if value is within array return true/false:
+
+```
+
+```
