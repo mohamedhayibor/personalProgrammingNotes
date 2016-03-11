@@ -67,54 +67,90 @@ Principles:
 03/10
 ------
 
-ES6 Array methods (9):
-.from() | .of() | .copyWithin() | .fill() | .find() | .findIndex() | .keys() | .enties() | .values()
+ES6 Array helpers (9):
+.from() | .of() | .copyWithin() | .fill() | .find() | .findIndex() | .keys() | .entries() | .values()
 
-* .from() transforms arraylike and iterator objects into arrays:
+###### Array Methods
+
+* Array.from() transforms arraylike and iterator objects into arrays:
+
+```js
+const obj = { '1': 'Apple', '2': 'Orange', length: 4};
+
+console.log( Array.from(obj) );
+// [ undefined, 'Apple', 'Orange', undefined ]
+// in Js Arrays are zero based
+--
+function f ( ) {
+	return Array.from(arguments)
+}
+console.log( f(1, 2, 3, 4) );
+// [ 1, 2, 3, 4 ]
+// arguments is an array like object
+
+// literally any iterable: sets, maps, strings
 
 ```
 
+* Array.of() creates a new Array instance with a variable number (regardless of type):
+
+```js
+console.log( Array.of(1, null, undefined, 4, NaN) );
+// [ 1, null, undefined, 4, NaN ]
 
 ```
-
-* .of() creates a new Array instance with a variable number (regardless of type):
-
-```
-
-```
+###### Array Prototypes
 
 * .copyWithin(indices), like the name implies, returns an array with copies within the array depending (starting, end indices):
 
-```
+```js
+console.log( [1, 2, 3, 4, 5, 6].copyWithin(0, 3) );
+// [ 4, 5, 6, 4, 5, 6 ]
 
 ```
 
-* .fill(value), fills array with a value depending on start, end indices:
+* .fill(value, start, end), fills array with a value depending on start, end indices:
 
-```
+```js
+console.log( [1, 2, 3, 4, 5, 6].fill(1.1, 2) );
+// [ 1, 2, 1.1, 1.1, 1.1, 1.1 ]
 
 ```
 
 * .find(callback), returns a value that satifies callback or undefined:
 
-```
-
+```js
+function isEven (x) {
+	return x % 2 === 0;
+}
+console.log( [1, 2, 3, 4, 5, 6].find(isEven) );
+// 2
 ```
 
 * .findIndex(callback), returns index of value that satifies callback or -1:
 
-```
-
+```js
+function isEven (x) {
+	return x % 2 === 0;
+}
+console.log( [1, 2, 3, 4, 5, 6].findIndex(isEven) );
+// 1
 ```
 
 * Array.{ keys, entries, values } returns a new Array iterator:
 
-```
+```js
+const arr = [1, 2, 3, 4, 5, 6];
+const it = arr.keys();
+
+console.log( it.next() ); // { value: 0, done: false }
+console.log( it.next() ); // { value: 1, done: false }
 
 ```
 
-* .contains(value), checks if value is within array return true/false:
+* .includes(value), checks if value is within array return true/false:
 
-```
+```js
+console.log( [1, 2, 3, 4, 5, 6].includes(5) ); // true
 
 ```
