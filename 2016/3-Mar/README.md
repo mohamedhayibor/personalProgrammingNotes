@@ -154,3 +154,62 @@ console.log( it.next() ); // { value: 1, done: false }
 console.log( [1, 2, 3, 4, 5, 6].includes(5) ); // true
 
 ```
+
+03/11
+------
+
+##### Tips on Optimizing javascript code:
+
+Use of prototypes instead of methods whenever possible to avoid the recreation of functions and closures.
+
+```js
+// Bad
+baz.Bar = function() {
+  // constructor body
+  this.foo = function() {
+    // method body
+  };
+}
+
+// Good refactor
+baz.Bar = function () {
+	// constructor body
+}
+baz.Bar.prototype.foo = function () {
+	// method body
+}
+
+```
+> only one function ever gets created, no closures are created.
+
+Place variable declarations/initialization with value types (not reference types such as arrays or objects) in prototypes.
+
+```js
+// Bad
+foo.Bar = function() {
+  this.prop1_ = 4;
+  this.prop2_ = true;
+  this.prop3_ = [];
+  this.prop4_ = 'blah';
+};
+// Better
+foo.Bar = function() {
+  this.prop3_ = [];
+};
+
+foo.Bar.prototype.prop1_ = 4;
+
+foo.Bar.prototype.prop2_ = true;
+
+foo.Bar.prototype.prop4_ = 'blah';
+
+```
+
+Double check closures:
+* Common source for memory leaks
+* Much slower than using an inner function, much slower than static functions
+* They add a level to the scope chain. Exple: When the browser resolves properties, each level of the scope chain must be checked.
+
+Avoid `with`, as it modifies the scope chain, making more expensive to look up variables in other scopes.
+
+[ Google Develpers Link ](https://developers.google.com/speed/articles/optimizing-javascript#defining-class-methods)
