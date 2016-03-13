@@ -213,3 +213,24 @@ Double check closures:
 Avoid `with`, as it modifies the scope chain, making more expensive to look up variables in other scopes.
 
 [ Google Develpers Link ](https://developers.google.com/speed/articles/optimizing-javascript#defining-class-methods)
+
+3/12
+-------
+
+###### The pixel pipeline:
+1. Javascript
+2. Style calculations
+3. Layout
+4. Paint
+5. Compositing
+
+###### Reflow:
+The browser's process of recalculating layout (positions, geometries) of elements in the document.
+
+> Reflows are user-blocking operations in the browser.
+
+Guidelines for reducing reflows:
+* reduce unecessary DOM depth (changes at one level can trigger changes at every level of the tree)
+* remove unused css
+* with animations use absolute values as much as possible
+* Avoid complex css selectors
