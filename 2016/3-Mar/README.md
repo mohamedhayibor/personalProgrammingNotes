@@ -234,3 +234,41 @@ Guidelines for reducing reflows:
 * remove unused css
 * with animations use absolute values as much as possible
 * Avoid complex css selectors
+
+3/13
+-------
+###### tinkering with redux
+common example when using redux:
+```js
+dispatch({
+  type: 'ADD_TODO',
+  text: 'Use Redux'
+})
+```
+dispatch in this case is a function getting called (executed with an object param.)
+> Actions themselves are plain objects
+
+a redux thunk middleware for "Async Action creation"
+
+```js
+function addTodo(text) {
+  return function (dispatch, getState) {
+    if (getState().todos.length === 3) {
+      return;
+    }
+    dispatch(addTodoWithoutCheck(text))
+  }
+}
+
+```
+Middleware lets you inject custom logic that interprets every action before it is dispatched.
+> Middleware let us write more expressive, potentially async action creators.
+Simplest middleware example:
+> thunk: a function returning a function.
+
+The redux store is instantiated with the following:
+```js
+import { createStore } from 'redux'
+var store = createStore(() => {})
+```
+> expects a function to reduce to the current state.
