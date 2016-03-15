@@ -272,3 +272,100 @@ import { createStore } from 'redux'
 var store = createStore(() => {})
 ```
 > expects a function to reduce to the current state.
+
+3/14
+---
+
+###### notes from Dan Abramov's video series:
+
+Vid 1:
+Complex or Simple you are going to represent your application's state as a single javascript object.
+
+All changes in the state are explicit. It is possible to keep track of all of them.
+
+
+Vid 2:
+The state tree is read only. (you can't directly modify or write to it)
+Instead anytime you want to change the state, you need to dispatch an action.
+-An action is a plain JS object describing the change.
+
+For instance: the state is the minimal representation of your data within the app. the action is the minimal representation of the change of the data.
+The structure of the action object is up to the programmer. The only req is that it should have a type property.
+
+Any change of the state of the application is triggered by actions.
+
+Vid 3:
+Some functions that you will write in redux will need to be pure (no mutations)
+
+Vid 4:
+To describe state mutations, you have to write a function that takes the previous state of the app, the action being dispatched, and returns the next state of the app and the function has to be pure. The function is called a reducer.
+
+Vid 5:
+The reducer accepts (state, action)
+
+vid 6:
+createStore has 3 important methods:
+* .getState(): retrieves the current state of the redux store.
+* .dispatch(): lets you dispatch actions to change the state of your application.
+* .subscribe(): lets us register a callback that the redux store will call everytime an action has been dispatched. (for instance: updating the UI of you app)
+
+All three in action:
+```js
+const reducer = (state = 0, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+const { createStore } = Redux;
+const store = createStore(reducer);
+
+const render = () => {
+  document.body.innerText = store.getState();
+};
+
+store.subscribe(render);
+render();
+
+document.addEventListener('click', () => {
+  store.dispatch({ type: 'INCREMENT'})
+})
+
+
+```
+[JSBIN Link](http://jsbin.com/vedaxipuco/2/edit?js,output)
+
+vid 7:
+implementation of redux createStore from scratch (ignoring edge cases).
+The only argument: reducer
+
+```js
+const createStore = (reducer) {
+	let state = state;
+	let listeners = [];
+
+	const getState = () => state;
+
+	const dispatch = (action) => {
+		state = reducer(state, action);
+		listeners.forEach(listener => listener());
+	};
+
+	const subscribe = (listener) => {
+		listeners.push(listener);
+		return () => {
+			listeners = listeners.filter(l => l !== listener)
+		};
+	};
+
+	dispatch({});
+
+	return { getState, dispatch, subscribe }
+};
+
+```
