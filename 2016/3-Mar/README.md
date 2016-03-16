@@ -369,3 +369,42 @@ const createStore = (reducer) {
 };
 
 ```
+
+3/15
+-------
+
+###### more redux
+
+> applyMiddleware takes all your middlewares as parameters and returns a function to be called
+with Redux createStore. At the last function invocation, it produces "a higher-order
+store that applies middleware to a store's dispatch".
+
+```js
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
+const finalCreateStore = applyMiddleware(thunkMiddleware)(createStore);
+```
+
+updating our views (re-rendering)
+
+> <provider> a component that takes your store as property and has a function as child.
+
+[redux counter example](http://jsbin.com/xupuwefagu/2/edit?js,output)
+
+```js
+// combineReducers from scratch (ignoring edge cases)
+const combineReducers = (reducers) => {
+	return (state = {}, action) => {
+		return Object.keys(reducers).reduce(
+			(nextState, key) => {
+				nextState[key] = reducers[key](
+					state[key],
+					action
+				);
+			},
+			{}
+		);
+	};
+};
+
+```
