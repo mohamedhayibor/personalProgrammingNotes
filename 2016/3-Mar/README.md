@@ -408,3 +408,81 @@ const combineReducers = (reducers) => {
 };
 
 ```
+3/16
+-----
+
+##### DOM: a programming interface for HTML, XMl and SVG.
+> provides a structured representation of the document as a tree (group of nodes and objects, posessing various properties and methods).
+
+###### Element.getElementsByTagName() returns a live HTML collection of elements with the given tag name. (search restricted to elements which are descendants of the specified element)
+```js
+// check the alignment on a number of cells in a table. 
+var table = document.getElementById("forecast-table"); 
+var cells = table.getElementsByTagName("td"); 
+for (var i = 0; i < cells.length; i++) { 
+    var status = cells[i].getAttribute("data-status"); 
+    if ( status == "open" ) { 
+        // grab the data 
+    }
+}
+// from mozilla
+```
+
+###### Document.getElementById() returns a reference to the element by its ID (string: case sensitive)
+
+###### Document.createElement() creates the specified HTML element.
+
+###### Node.appendChild() methods adds a node to the end of the list of children of a specified parent node.
+
+###### Element.innerHTML() property sets or gets the HTML syntax describing the element's descendants.
+* var content = element.innerHTML  // => on return, content contains the serialized HTML code describing all of the element's descendants.
+* element.innerHTML = content // => removes all element's children, parses the content string and assigns the resulting nodes as children of the element.
+> This property provides a simple way to completely replace the contents of an element.
+```js
+document.body.innerHTML = '' // replaces the body content with an empty string.
+```
+> innerHTML property of many types of elements, body, html,... can be returned or replaced.
+
+For security reasons do not use innerHTML when inserting plain text, instead use node.textContent. This doesn't interpret the passed content as HTML, but instead inserts it as raw text.
+
+###### HTMLElement.style property returns a CSSStyleDeclaration object that represents only the element's inline style attribute, ignoring any applied style rules.
+
+###### Element.setAttribute() adds a new attribute or changes the value of an existing attribute on the specified element.
+> element.setAttribute(name, value)
+* name: name of the attribute as a string
+* value: desired new value of the attribute
+
+```js
+var b = document.querySelector("button"); 
+b.setAttribute("disabled", "disabled");
+```
+> set the attr to disabled
+
+###### Element.getAttribute() returns the value of a specified attribute on the element. null or an empty string will be returned if attr doesn't exist.
+```js
+var attribute = element.getAttribute(attributeName);
+```
+###### EventTarget.addEventlistener() registers the specified listener on the eventTarget it's called on.
+```js
+//general example
+target.addEventListener(type, listener[, options]);
+
+// with callback
+document.getElementById('increment')
+	.addEventListener('click', function () {
+		store.dispatch({ type: 'INCREMENT'})
+	})
+```
+> it works on any DOM element, not just HTML elements.
+###### GlobalEventHandlers.onload, an event handler for the load event of a window
+```js
+window.onload = function() {
+  init();
+  doSomethingElse();
+};
+```
+###### Window.scrollTo(), scrolls to a particular set of coordinates in the document.
+```js
+window.scrollTo( 0, 1000 );
+// xcord, ycord
+```
