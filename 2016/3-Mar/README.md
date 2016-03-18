@@ -486,3 +486,47 @@ window.onload = function() {
 window.scrollTo( 0, 1000 );
 // xcord, ycord
 ```
+3/17
+-------
+###### DOM Interfaces:
+Attr: attribute of a DOM element as an object.
+> Element.getAttribute() returns the value of a specified attribute on the element. (used more than getAttributeNode())
+```js
+var div1 = document.getElementById("div1");
+var align = div1.getAttribute("align");
+// align == 'div1'
+```
+Element.hasAttribute() to check for an attribute existence prior to calling getAttribute().
+
+* HTMLCollection.length returns the number of items in the collection.
+* MutationObserver provides developers a way to react to changes in a DOM.
+```js
+new MutationObserver(
+  callback
+);
+```
+methods: .observe(), .disconnect(), .takeRecords()
+* MutationRecord represents an individual DOM mutation, the object passed to MutationObserver's callback
+* NodeFilter interface represents an object used to filter the nodes in a NodeIterator (TreeWalker)
+* NodeIterator interface represents an iterator over the members of a list of nodes in a subtree of the DOM.
+```js
+var nodeIterator = document.createNodeIterator(root, whatToShow, filter);
+```
+* DocumentFragment interface represents a minimal document object that has no parent. (light version of Document)
+* NodeList objects: collection of nodes returned by Node.childNodes and the document.querySelectorAll
+* DOMImplementation interface represent an object providing methods which are not dependent on any particular document.
+* PromiseResolver interface represents an object controlling the state and the result value from a promise.
+* DOMString: UTF-16 string
+* The range interface represents a fragment of a document that can contain nodes and part of text nodes.
+* Element: object of a Document.
+* The Worker interface of the Web Workers API, represents a background task that can be easily created and can send messages back to its creator.
+```js
+// service worker example
+var myWorker = new Worker("worker.js");
+var first = document.querySelector('#number1');
+
+first.onchange = function() {
+  myWorker.postMessage([first.value,second.value]);
+  console.log('Message posted to worker');
+}
+```
