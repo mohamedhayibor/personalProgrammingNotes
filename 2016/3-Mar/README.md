@@ -530,3 +530,23 @@ first.onchange = function() {
   console.log('Message posted to worker');
 }
 ```
+3/18
+----------
+
+CORS (Cross Origin Resource Sharing): allow a site to get resources from a third party site. Sites normally forbid this type of request.
+
+* a source file can serve as a type of bridge to export from another module
+```js
+export { encrypt as en } from 'crypto';
+```
+
+###### Promise: a deferred and asynchronous computations.
+(Hasn't completed yet, but is expected to complete) - Params: resolve, reject
+
+It represents a proxy to for a value to be created in the future.
+> states: pending, successful, rejected
+Methods:
+* .then(onFulfilled, onRejected): appends fulfillment and rejection handlers to the promise and returns a new promise resolving the return value of the called handler.
+* .catch(onRejected): appends rejection handler callback to the promise and returns a new promise resolving the return value of the callback.
+
+The method (Async composition) is a solution to callback hell (can also revert to functional programming hooks)
