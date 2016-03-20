@@ -550,3 +550,22 @@ Methods:
 * .catch(onRejected): appends rejection handler callback to the promise and returns a new promise resolving the return value of the callback.
 
 The method (Async composition) is a solution to callback hell (can also revert to functional programming hooks)
+
+3/19
+-----
+```
+ EventTarget  <-  Node  <-  Document 
+```
+* Document.cookie: get and set cookies associated with the current document.
+
+```js
+allCookies = document.cookie // read all cookies accessible from this location
+
+document.cookie = newCookie; // writing a new cookie
+```
+allCookies: is a string containing a semi-colon separated list of all cookies.
+
+newCookie is a string of form key=value.
+
+* Document.readyState: describes the loading state of the document (3 states: loading, interactive, complete)
+* Document.plugins: returns an HTML collection of <embed> elements in the current document.
