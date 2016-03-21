@@ -569,3 +569,48 @@ newCookie is a string of form key=value.
 
 * Document.readyState: describes the loading state of the document (3 states: loading, interactive, complete)
 * Document.plugins: returns an HTML collection of <embed> elements in the current document.
+
+3/20
+-----
+Chai Assertion styles:
+
+1. Assert: exposed through assert interface (similar to one from Node.js api)
+```js
+import { assert } from 'chai'
+const name = 'Micheal'
+assert.typeOf(name, 'string', 'name is a string') // with optional message
+```
+[full Assert API](http://chaijs.com/api/assert/)
+
+2. BDD (should || expect)
+Both use a chainable language to construct assertions
+
+```js
+import { expect } from 'chai'
+const name = 'Micheal'
+expect(name).to.be.a('string');
+```
+
+should differs from expect as it extends each object with a `should` property to start your chain. (caution on browser compatibility)
+```js
+const should = require('chai').should();
+// alternative with import: `import 'chai/should'`
+
+const name = 'Micheal'
+
+name.should.be.a('string')
+```
+> In brief, expect provides a function as a starting point for chaining language assertions. should extends Object.prototype to provide a single getter as a starting point for assertions.
+
+[full BDD Api](http://chaijs.com/api/bdd/)
+
+###### Mocha is the recommended testing framework for chai, but we also use any other framework.
+
+for your package.json configurations:
+```js
+"scripts": {
+  "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive", // test recursively (starting from test/test_helper.js)
+  "test:watch": "npm run test -- --watch" // to run all test when files change
+},
+
+```
