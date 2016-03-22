@@ -614,3 +614,14 @@ for your package.json configurations:
 },
 
 ```
+3/21
+----
+- ImmutableJS's update can help us test nested data structures.
+```js
+function addMovie(currentState, movie) {
+  return currentState.update('movies', movies => movies.push(movie));
+}
+```
+With plain old javascript, `Object.freeze()` can help us in that concern.
+
+- Api endpoints (endpoint: another term for routes)
