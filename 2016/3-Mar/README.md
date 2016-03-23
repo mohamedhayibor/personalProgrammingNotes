@@ -625,3 +625,39 @@ function addMovie(currentState, movie) {
 With plain old javascript, `Object.freeze()` can help us in that concern.
 
 - Api endpoints (endpoint: another term for routes)
+
+3/22
+-----
+
+- updateIn() `ImmutableJS`: returns a new map having applied to updater to the entry found at the keyPath.
+
+- Stateless components: Pure components: Dumb components:
+1. receives all its data as props, like a function receives all its data arguments. (no side effects)
+2. has no internal state: what it renders is fully driven by its input props. (easy to test)
+
+reducer composition: help us in making operations work on the smallest piece or (subtree) of the state possible. (modularization) + more often than not reduce the complexity of our test cases.
+
+> Our main reducer function in that case only hands parts of the state to lower-level reducer functions.
+
+In redux there is only one variable, the store which varies overtime. The rest are constants and immutable values.
+
+###### Security bits:
+
+Securing the bridge (ie when you're implementing socket.io connections "to multiple clients"):
+
+You probably don't want client side Javascript being able to send just any message to any handlers on the server side to all other browsers, and also the ability for any client to listen in on any event bus addresses.
+
+Solution: by default refuse to let through any messages. (Then you can allow some that satisfy different specs). You can do that with `BridgeOptions`:
+
+* setAddress: this represents the exact address the message is being sent to. (ie exact addresses)
+* setAddressRegex: a regex that will be matched with against the address.
+* setMatch: to allow messages based on their structure. (currently works with JSON messages)
+
+CSRF: Cross Site Request Forgery: a technique by which an unauthorized site can gain your user's private data.
+
+> Prevention: you can use Vert.x-Web's `CSRHandler`
+
+On each get request under this handler a cookie is added to the response with a unique token. Clients are then expected to return this token back in a header.
+Since cookies are sent it is required that the cookie handler is also present on the router.
+
+[vertx.io](http://vertx.io/docs/vertx-web/java/#_securing_the_bridge)
