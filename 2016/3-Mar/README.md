@@ -629,9 +629,9 @@ With plain old javascript, `Object.freeze()` can help us in that concern.
 3/22
 -----
 
-- updateIn() `ImmutableJS`: returns a new map having applied to updater to the entry found at the keyPath.
+updateIn() `ImmutableJS`: returns a new map having applied to updater to the entry found at the keyPath.
 
-- Stateless components: Pure components: Dumb components:
+Stateless components: Pure components: Dumb components:
 1. receives all its data as props, like a function receives all its data arguments. (no side effects)
 2. has no internal state: what it renders is fully driven by its input props. (easy to test)
 
@@ -658,6 +658,6 @@ CSRF: Cross Site Request Forgery: a technique by which an unauthorized site can 
 > Prevention: you can use Vert.x-Web's `CSRHandler`
 
 On each get request under this handler a cookie is added to the response with a unique token. Clients are then expected to return this token back in a header.
-Since cookies are sent it is required that the cookie handler is also present on the router.
+> Since cookies are sent it is required that the cookie handler is also present on the router.
 
 [vertx.io](http://vertx.io/docs/vertx-web/java/#_securing_the_bridge)
