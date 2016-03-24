@@ -661,3 +661,24 @@ On each get request under this handler a cookie is added to the response with a 
 > Since cookies are sent it is required that the cookie handler is also present on the router.
 
 [vertx.io](http://vertx.io/docs/vertx-web/java/#_securing_the_bridge)
+
+3/23
+--------
+To get some performance boost, you can use pureRenderMixin when it comes to pure components.
+React in will not bother performing deep checks. It uses shouldComponentUpdate under the hood.
+
+```js
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+class FooComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
+  }
+
+  render() {
+    return <div className={this.props.className}>foo</div>;
+  }
+}
+
+// use rather mixins: [pureRenderMixin] in es5
+```
