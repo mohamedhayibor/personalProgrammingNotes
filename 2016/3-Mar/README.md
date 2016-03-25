@@ -682,3 +682,26 @@ class FooComponent extends React.Component {
 
 // use rather mixins: [pureRenderMixin] in es5
 ```
+3/24
+-----
+Setting intervals and clearing them out.
+
+```js
+var id = setInterval(function() {
+  // do something every 1 sec
+
+  // to stop/cancel this interval
+  clearInterval(id);
+}, 1000);
+```
+
+* Error.prototype.message: the message property is human readable description of the error.
+
+```js
+var a = new Error('Could not parse input, try again');
+console.log(a)
+// [Error: Could not parse input, try again]
+console.log(a.message)
+// 'Could not parse input, try again'
+```
+The Error constructor creates an error object. Instances of Error objects are thrown when runtime error occur.
