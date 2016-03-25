@@ -705,3 +705,55 @@ console.log(a.message)
 // 'Could not parse input, try again'
 ```
 The Error constructor creates an error object. Instances of Error objects are thrown when runtime error occur.
+
+3/25
+----
+a .editorconfig file helps you define and maintain consistent coding styles between different editors and IDEs.
+(a collection of text editor plugins that enable editors to read the file format and adhere to defined styles).
+
+Example file
+```
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,py}]
+charset = utf-8
+
+# 4 space indentation
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Indentation override for all JS under lib directory
+[lib/**.js]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2
+
+```
+
+Wildcard patterns:
+```
+  *	Matches any string of characters, except path separators (/)
+  **	Matches any string of characters
+  ?	Matches any single character
+  [name]	Matches any single character in name
+  [!name]	Matches any single character not in name
+  {s1,s2,s3}	Matches any of the strings given (separated by commas) (Available since EditorConfig Core 0.11.0)
+```
+source: [editorconfig.org](http://editorconfig.org/)
