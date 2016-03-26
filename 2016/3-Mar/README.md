@@ -757,3 +757,9 @@ Wildcard patterns:
   {s1,s2,s3}	Matches any of the strings given (separated by commas) (Available since EditorConfig Core 0.11.0)
 ```
 source: [editorconfig.org](http://editorconfig.org/)
+
+cURL: a command line tool for getting and sending files using URL syntax:
+Example:
+```
+> curl -X POST https://link.com -H "Content-Type:application/json" --data '{"playerId":"userId", "action":"startGame"}'
+```
