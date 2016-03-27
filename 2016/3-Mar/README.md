@@ -763,3 +763,9 @@ Example:
 ```
 > curl -X POST https://link.com -H "Content-Type:application/json" --data '{"playerId":"userId", "action":"startGame"}'
 ```
+3/26 (should've written notes on http.request options)
+----
+To remove an existing version control:
+```
+> rm -R .git
+```
