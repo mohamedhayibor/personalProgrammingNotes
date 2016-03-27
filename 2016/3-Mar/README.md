@@ -769,3 +769,38 @@ To remove an existing version control:
 ```
 > rm -R .git
 ```
+3/27
+----
+Prism a lightweight, extensible syntax highlighter.
+
+set-up: include prism.css and prism.js [source and documentation ](http://prismjs.com/)
+###### React Top level API:
+
+- React.Component: the base class of React.Components when they're defined using ES6 classes.
+- React.createClass: create a component class, given a spec. it implements a render method which returns one single child.
+(has a convenience wrapper, calls new for you)
+
+- React.createElement: creates and returns a react element of a given type. (div, span, ...)
+
+- React.createFactory: returns a function that produces react elements of a given type.
+
+- React.isValidElement: checks  whether the object is a ReactElement.
+
+- React.DOM: provides a convenience wrapper around React.createElement for DOM component. (only when using JSX)
+
+- React.PropTypes: validate props being passed to your component for a specific data type.
+
+- React.cloneElement: clones and returns a new ReactElement using element as the starting point.
+(new children will replace existing children).
+
+- React.Children: provides utilities for dealing with `this.props.children`
+  1. React.Children.map(object, fn): invokes fn on every immediate child contained whithin children
+  2. React.Children.forEach(object, fn): like React.Children.map but doesn't return an array.
+  3. React.Children.count(object): returns the number of components in children.
+  4. React.Children.only(object): retuns the only child in children or throws an error otherwise.
+  5. React.Children.toArray(object): retuns children as a flat array with keys assigned to each child.
+  (useful when manipulating collections of children in your render method)
+
+- ReactDOM.unmountComponentAtNode: remove a mounted React component from the DOM and clean up its event handlers and state. (retuns false, if already unmounted).
+- ReactDOM.findDOMNode: returns the native browser DOM element. (can use a ref to avoid using findDOMNode at all)
+- ReactDOM/server: allows you to render components on server.
