@@ -804,3 +804,10 @@ set-up: include prism.css and prism.js [source and documentation ](http://prismj
 - ReactDOM.unmountComponentAtNode: remove a mounted React component from the DOM and clean up its event handlers and state. (retuns false, if already unmounted).
 - ReactDOM.findDOMNode: returns the native browser DOM element. (can use a ref to avoid using findDOMNode at all)
 - ReactDOM/server: allows you to render components on server.
+
+3/28
+--------
+To make sure your module is published publicly:
+```
+ > npm publish --access=public
+```
