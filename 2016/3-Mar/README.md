@@ -811,3 +811,19 @@ To make sure your module is published publicly:
 ```
  > npm publish --access=public
 ```
+3/29
+----
+Backing instances using refs
+
+```js
+// assign ref
+<input ref="customInput" />
+// assign it a variable
+var input = this.refs.customInput;
+// can ge value with .value() method
+```
+> an altenative to streaming props or state.
+
+caution: refs cannot be assigned to stateless functions (doesn't have a backing instance)
+
+* React.propTypes.onOfType( [... ]): the object can be one of the types in the array.
