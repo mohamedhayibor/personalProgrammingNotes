@@ -827,3 +827,123 @@ var input = this.refs.customInput;
 caution: refs cannot be assigned to stateless functions (doesn't have a backing instance)
 
 * React.propTypes.onOfType( [... ]): the object can be one of the types in the array.
+
+3/30
+-----
+
+###### esoteric html tags:
+
+`<base>`: specifies the base URL (href) for all relative URLs contained within a document. (target: _self, _blank, _top, _parent)
+
+`<link>`: defines relationships between the current document and an external resource. (mostly used to link stylesheets)
+* crossorigin:
+	1. "anonymous": a cross origin request made with no credential sent.
+	2. "user-credentials": a COR made with credential sent.
+* href: specifies the url of the linked resource.
+* rel: names the relationship between the linked document to the current document.
+
+`<meta>`: 
+* "Content-Security-Policy": allows web site administrators to defined content policies for served resources. (helps against cross-site scripting attacks)
+* charset: "UTF-8"
+
+`<style>`: contains style information for a document. (type defaults to "text/css" if not set)
+
+`<title>`: defines the title of the document (any contained tags are ignored, treated as text)
+
+`<address>`: supplies contact information for it nearest `article` or `<body>`
+
+`<article>`: represents a self-contained composition in a document page. (intended to be independently distributable or reusable)
+
+`<section>`: a generic section of a document. (use div as a generic container)
+
+`<figcaption>`: represents a caption or a legend inside a `<figure>` element.
+
+`<figure>`: a self-contained content. (for: image, code snippets, illustration, diagram)
+
+`<main>`: represents the main content of the body.
+
+`<cite>`: a reference to a creative work (include title & url ref).
+
+`<code>`: fragment of computer code.
+
+`<em>`: stress emphasis.
+
+`<q>`: short inline quotation.
+
+`<mark>`: used to highlight text.
+
+`<s>`: renders text with a strikethrough.
+
+`<span>`: used to group elements for styling `class or id`.(span: inline element, div: block level)
+
+`<sub>`: displayed lower, smaller than regular text. (sup: higher, smaller)
+
+`<u>`: renders text with an underline.
+
+`<var>`: html variable element.
+
+`<wbr>`: position within the text where browser may optionally break.
+
+`<embed>`: an integration point for an external application or interactive content.
+
+`<object>`: an external resource treated as image or treated by a plugin. (can has `<param>` element)
+
+`<textarea>`: element represents a multi-line plain-text editing control.
+
+`<select>`: represents a control that represents a menu of options.
+
+```
+<select name="select">
+  <option value="value1">Value 1</option> 
+  <option value="value2" selected>Value 2</option>
+</select>
+```
+
+`<progress>`: used to view the completion of a task. (JS to manipulate the value)
+
+`<output>`: represents the result of a calculation or user action.
+
+`<form>`: a document section that contains interactive controls to submit information to a web server.
+
+`<datalist>`: contains a set of option elements that represent the values available for other controls.
+
+```
+<label>Choose a browser from this list:
+<input list="browsers" name="myBrowser" /></label>
+<datalist id="browsers">
+  <option value="Chrome">
+  <option value="Firefox">
+</datalist>
+```
+`<caption>`: represents the title of a table.
+
+`<del>`: represents a range of text deleted from the DOM. (often rendered with a strikethrough) text.
+
+```
+<dl>
+	<dt></dt>
+	<dd></dd>
+</dl>
+```
+
+##### Security:
+Subresource integrity: a security feature that enables browsers to verify that files they fetch are delivered without unexpected manipulation.
+> Method: including a base64-encoded cryptographic hash (or cryptographic digest)
+```
+sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC
+```
+How is Subresource Integrity different from HTTPS?
+
+TLS ensures that the connection between the browser and the server is secure. Resources can still be modified server-side and delivered with valid TLS certificate.
+> SRI guarantees that a resource hasn't changed since it was hashed by a web author.
+
+[srihash.org](https://www.srihash.org/)
+
+Implementation:
+```html
+<script src="https://example.com/example-framework.js"
+        integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC"
+        crossorigin="anonymous"></script>
+```
+	1. When the browser encounters <script> or <link> element with an integrity attibute, it must first compare the script or link to the expected integrity value.
+	2. If the script or link does not match the browser must refuse to excecute any script or style and return a network error indicating that fetching the script or link failed.
