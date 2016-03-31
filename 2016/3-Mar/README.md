@@ -947,3 +947,22 @@ Implementation:
 ```
 	1. When the browser encounters <script> or <link> element with an integrity attibute, it must first compare the script or link to the expected integrity value.
 	2. If the script or link does not match the browser must refuse to excecute any script or style and return a network error indicating that fetching the script or link failed.
+
+
+###### Notes from Sebastian markbage's react basic
+
+* core premise of React: UIs a projection of data into a different form of data. (same input => same output)
+
+* Uis can be abstracted into reusable pieces that doesn't leak implementation details.
+
+* Composition: not enough to simply reuse leaves and build new containers for them. We need to build abstractions from the containers that compose other abstractions. (combining two or more abstractions into one)
+
+* State: we tend to prefer our data model to be immutable and use functions that can update state as a single atom at the top (side effects).
+
+* Memoization: if we know that a function is pure, we can create a memoized version of a function that keeps track of the last argument and last result.
+
+* Continuation: to move some of the boilerplate out of critical business logic, we can defer their execution using currying (bind in JS). (passing state through from outside our core functions).
+
+* We can use a context to pass things between two abstractions without involving intermediates.
+
+[link](https://github.com/reactjs/react-basic)
