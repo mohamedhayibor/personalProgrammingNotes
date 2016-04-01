@@ -966,3 +966,45 @@ Implementation:
 * We can use a context to pass things between two abstractions without involving intermediates.
 
 [link](https://github.com/reactjs/react-basic)
+
+3/31
+------
+quick image background:
+```
+body: {
+	background: url(...link);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+```
+reqs to get a border: /* width, color, style */
+
+css design patterns:
+> `* { ....}` : applies to all elements in dom.
+
+* Descendant selector:
+```
+li a {
+...	
+}
+```
+* Adjacent Selector:
+```
+h5 + ul {
+	border: 4px solid red;
+}
+```
+* Attribute selector:
+```
+a[href="http://www.yahoo.com"] {
+	background: blue;	
+}
+```
+* nth of text:
+```
+ul: nth-of-type(3) {
+	background: red;
+}
+```
+specificity by order of 10:
+inline styles -> ids -> (classes, attributes, pseudo classes) -> type selectors
