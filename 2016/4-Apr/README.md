@@ -65,7 +65,7 @@ div:not(#container) {
 
 4/2
 ---------
-Git squash: pushing a bunch of commits as a single pull request.
+Git squash: pushing a bunch of commits as a single commit (use case: for a pr).
 
 example squashing 5 commits
 ```
