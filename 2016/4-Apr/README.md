@@ -62,3 +62,12 @@ div:not(#container) {
 }
 ```
 [codeTutsplus](http://code.tutsplus.com/tutorials/the-30-css-selectors-you-must-memorize--net-16048)
+
+4/2
+---------
+Git squash: pushing a bunch of commits as a single pull request.
+
+example squashing 5 commits
+```
+git rebase -i HEAD~5
+```
