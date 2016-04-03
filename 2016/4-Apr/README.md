@@ -71,3 +71,25 @@ example squashing 5 commits
 ```
 git rebase -i HEAD~5
 ```
+Reasons to use git rebase:
+1. edit previous commit messages.
+2. squashing.
+3. Delete or revert commits that are no longer necessary.
+
+Rebasing commits against a branch:
+```
+git rebase -i `otherBranchName`
+```
+
+Commands available while rebasing:
+* pick: to include commit (delete entire line to not include commit).
+* reword: like pick, but the rebase process will pause and give you the chance to alter the commit message.
+* edit: you'll get the chance to add or change the commit entirely. (also allows you to to split a large commit into smaller ones)
+* squash: (see example above), gives you the chance to write a new commit message.
+* fixup: similar to squash, but the commit to be merged has its message discarded.
+* exec: lets you run arbitrary shell commands against a commit.
+
+Since rebase changes the git history, rather than `git push origin` use:
+```
+git push origin master --force
+```
