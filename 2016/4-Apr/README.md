@@ -93,3 +93,25 @@ Since rebase changes the git history, rather than `git push origin` use:
 ```
 git push origin master --force
 ```
+
+4/3
+-----
+Quick dive into building a chrome extension:
+1. create a `manifest.json` file
+2. Set up minimum resources: icon.png and popup.html (enabled with popup.js)
+3. Load the extension: `load unpacked extension` via extensions developer mode
+4. Set up trigger action with manifest.json file
+
+```json
+{
+  ...
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Click here!"
+  },
+  ...
+}
+
+```
+[Chrome ext api](https://developer.chrome.com/extensions/api_index)
