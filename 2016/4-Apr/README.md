@@ -116,3 +116,16 @@ Quick dive into building a chrome extension:
 
 ```
 [Chrome ext api](https://developer.chrome.com/extensions/api_index)
+
+4/4
+----
+Event.target: a reference to the object that dispatched the event. (can be used for event delegation).
+
+example: hiding an element when a click event fires:
+```js
+function hide(e) {
+  e.target.style.visibility = 'hidden';
+}
+// adding listener
+element.addEventListener('click', hide, false);
+```
