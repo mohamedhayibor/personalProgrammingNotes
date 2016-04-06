@@ -129,3 +129,22 @@ function hide(e) {
 // adding listener
 element.addEventListener('click', hide, false);
 ```
+4/5
+----
+To add a listener when dealing with the DOM, we can use a method called addEventListener:
+
+```js
+// with unanimous callback
+var button = document.querySelector("button");
+button.addEventListener("click", function () {
+	console.log("a click event fired");
+})
+```
+###### Performance & Memory issues:
+> It is preferable to use named function instead unanonimous ones so that .removeEventListener() can be used to detach the event.
+
+```js
+Element.removeEventListener('click', listener, false);
+```
+
+When looping an unanonimous function will be recreated every single time, which can be a performance issue.
