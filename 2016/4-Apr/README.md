@@ -148,3 +148,18 @@ Element.removeEventListener('click', listener, false);
 ```
 
 When looping an unanonimous function will be recreated every single time, which can be a performance issue.
+
+4/6
+----
+A Hash function is any function that can be used to data of arbitrary size to data of fixed size (returned values are called hash values, hash codes, hash sums or hashes).
+
+A hash table is used for quick lookup (accelerate table or database lookup by detecting duplicated records in a large file)
+
+Properties:
+
+1. Deterministic: for a given input it must always generate the same hash value.
+2. Uniformity: should map the expected inputs as evenly as possible over its output range.
+3. Defined range: (ie output that is constrained to 32 bit integer values can be used to index an array).
+4. Data normalization
+5. Continuity
+6. Non-invertible: (impossible to reconstruct the input values from hash values)
