@@ -163,3 +163,20 @@ Properties:
 4. Data normalization
 5. Continuity
 6. Non-invertible: (impossible to reconstruct the input values from hash values)
+
+4/7
+----
+
+Hash function algorithms: (Mostly depends on the nature of the input data and the normal distribution of the application)
+
+> a perfect hash function: maps each input to a different hash value. (injective)
+
+######z-index (css)
+property specifies the z-order of an element and its descendants. An element with a higher z-index usually covers another with a lesser one.
+
+For a positioned box: the z index specifies:
+
+1. The stack level of the box in the current stacking context
+2. Whether the box establishes a local stacking context
+
+> Stacking context: a the 3-dimensional conceptualization of HTML elements along an imaginary z-axis relative to the user.
