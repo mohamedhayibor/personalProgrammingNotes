@@ -180,3 +180,25 @@ For a positioned box: the z index specifies:
 2. Whether the box establishes a local stacking context
 
 > Stacking context: a the 3-dimensional conceptualization of HTML elements along an imaginary z-axis relative to the user.
+
+4/08
+-------
+The location interface represents the location URL of the object is linked to. Changes done on it are reflected on the object it relates to.
+
+Properties:
+
+* Location.href > a DOMString containing the entire url.
+* Location.hostname > a DOMString containing the domain url.
+* Location.username / .password > a DOMString containing the username/password specified before the domain name.
+
+Methods:
+
+Location.assign() method causes the window to load and display the document at the URL specified.
+```js
+document.location.assign('https://google.com');
+```
+
+The Location.reload() method reloads from the current URL. example:
+```js
+document.location.reload(true)
+```
