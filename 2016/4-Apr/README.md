@@ -202,3 +202,15 @@ The Location.reload() method reloads from the current URL. example:
 ```js
 document.location.reload(true)
 ```
+
+4/9
+----
+Microservices: a software achitechture in which complex applications are composed of small, independent processes communicating with each other using using language agnositc Apis.
+
+> small building blocks, highly decoupled and focussed on doing a small task well (unix philosophy)
+
+properties:
+
+1. Easy to replace
+2. Organized around capabilities
+3. Architectures are symetrical rather than hierarchical
