@@ -248,4 +248,11 @@ Processes: execute the app as one or more stateless processes.
 
 Port binding: the web app exports HTTP as a service by binding to a port.
 
+Disposability: (can be started or stopped at a moment's notice)
+
+Maximize robustness with fast startup and graceful shutdown.
+
+* Processes should strive to minimize startup time.
+* shut down gracefully when they receive a SIGTERM. (for instance: ceasing to listen on the service port)
+
 [12 factor app](http://12factor.net/)
