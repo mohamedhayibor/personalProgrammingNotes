@@ -214,3 +214,38 @@ properties:
 1. Easy to replace
 2. Organized around capabilities
 3. Architectures are symetrical rather than hierarchical
+4. 
+
+4/10
+-------
+codebase: a single or set of repositories who share a root commit (in a decentralized revision control system).
+
+a distributed system: multiple codebases. (each component in a D.S. is an app)
+
+a deploy: a running instance of the app.
+
+> one codebase per app. Many deploys of the app.
+
+App's config: everything that is likely to vary between deploy's (staging, production, developer environments)
+
+> strict separation of config from code.  (config varies substantially across deploys, code does not)
+
+Litmus test: can the codebase be open sourced without compromising any credentials.
+
+> store config in environment variables.
+
+A backing service is any service the app consumes over the network as part of its normal operation.
+
+A codebase is transformed into a deploy through 3 stages:
+
+1. Build stage: converts a code repo into an executable bundle known as a build.
+2. Release stage: the build produced by the build stage and combines it with the deploy's current config.
+3. Run stage: (runtime) runs the app in the execution environment.
+
+Processes: execute the app as one or more stateless processes.
+
+> Any data that need to persist must be stored in a stateful backing service (ie database)
+
+Port binding: the web app exports HTTP as a service by binding to a port.
+
+[12 factor app](http://12factor.net/)
