@@ -256,3 +256,13 @@ Maximize robustness with fast startup and graceful shutdown.
 * shut down gracefully when they receive a SIGTERM. (for instance: ceasing to listen on the service port)
 
 [12 factor app](http://12factor.net/)
+
+4/11
+-------
+
+SOA: service oriented architecture (SOA): architectural pattern in which application components provide services to other components via a communication protocol.
+
+npm onsite soa example:
+![im](http://res.cloudinary.com/masteryoperation/image/upload/v1460432872/Screen_Shot_2016-04-11_at_11.45.32_PM_hp3ojh.png)
+
+a trie: digital tree or (radix || prefix tree: can be searched by prefixes) is an ordered tree data structure used to store a dynamic set of associative array where the keys are usually strings. 
