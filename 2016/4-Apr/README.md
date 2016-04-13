@@ -266,3 +266,75 @@ npm onsite soa example:
 ![im](http://res.cloudinary.com/masteryoperation/image/upload/v1460432872/Screen_Shot_2016-04-11_at_11.45.32_PM_hp3ojh.png)
 
 a trie: digital tree or (radix || prefix tree: can be searched by prefixes) is an ordered tree data structure used to store a dynamic set of associative array where the keys are usually strings. 
+
+4/12
+-------
+###### Trie
+
+Characteristics:
+
+* The trie is a tree where each vertex represents a single word or a prefix.
+* The root represents an empty string. A vertex with k edges of distance of the root have an associated prefix of length k.
+* Let v and w be two vertexes of the trie, if v a direct father of w, then v must have an associated prefix of w.
+
+Advantage of using a trie:
+
+1. Looking up data in a trie is faster in the worst case scenario.
+2. There are no collisions of different keys in a trie
+3. Buckets in a trie are necessary only if a single key is associated with more than one value.
+4. No need to provide a hash function or to change hash functions as more keys are added to a trie.
+5. can provide alphabetical ordering of the entries by key
+
+Drawbacks: 
+
+1. Slower than hash tables for looking up data in some cases.
+2. Some keys, such as floating point numbers, can lead to long chains and prefixes that are not particularly meaningful.
+3. Some tries can require more space than a hash table. (as memory may be allocated for each character in the search string rather than a single chunk of memory for the whole entry)
+
+Common Application:
+
+Storing a predictive text or auto-complete dictionary.
+
+Alternative: DAFSA (Deterministic acyclic finite state automaton): can compress identical branches from the trie which corresponds to the same suffixes (or paths) of different words being stored.
+
+Tries are also well suited for implementing approximate matching algorithms (spell-checking, hyphenation).
+
+Trie implementation: 
+
+There are many implementations with different trade-offs between memory use and speed of operations. 
+
+data: 
+```js
+{ "amy": 56, "ann": 15, "emma": 30, "rob": 27, "roger": 52 }
+/** implementation for ann and amy
+   .
+   |
+   a
+ /   \
+m     n
+|     |
+y     n
+|     |
+\0 56 \0 15
+*/
+
+/** implementation for all
+          .
+  /       |      \
+  a        e       r
+/   \      |       |
+m     n     m       o
+|     |     |     /   \
+y     n     m    b     g
+|     |     |    |     |
+\0 56 \0 15   a  \0 27   e
+     |          |
+   \0 30        r
+                |
+              \0 52
+*/
+
+```
+[topcoder trie article](https://www.topcoder.com/community/data-science/data-science-tutorials/using-tries/)
+
+To check out next: radix sort, DAFSA
