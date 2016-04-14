@@ -337,4 +337,8 @@ y     n     m    b     g
 ```
 [topcoder trie article](https://www.topcoder.com/community/data-science/data-science-tutorials/using-tries/)
 
-To check out next: radix sort, DAFSA
+4/13
+-------
+radix sort: a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value.
+
+DAFSA or DAWG: a data structure that represents a sets of strings, and allows for a query operation that tests whether a given string belongs to the set in time proportional to its length.
