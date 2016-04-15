@@ -342,3 +342,20 @@ y     n     m    b     g
 radix sort: a non-comparative integer sorting algorithm that sorts data with integer keys by grouping keys by the individual digits which share the same significant position and value.
 
 DAFSA or DAWG: a data structure that represents a sets of strings, and allows for a query operation that tests whether a given string belongs to the set in time proportional to its length.
+
+4/14
+--------
+Session management: a process by which a server maintains state of an entity (interacting with it) to remember how to react to subsequent request throughout a transaction. (Should be unique per user and computationally very difficult to predict).
+
+Open Authorization (OAuth): a protocol that allows users to approve an application acting on their behalf without sharing passwords.
+
+OpenId: an HTTP-based protocol that uses identity providers (Google, FB, Twitter...) to validate that a user is who he/she is.
+
+
+> JWT = JSON Web Token: for passing claims between parties in web application environment. JWT claims can be used to pass identity of authenticated users between an identity provider and a service provider, or any other type of claims as required by business processes.
+[NodeJS implementation](https://github.com/auth0/node-jsonwebtoken)
+
+
+ClickJacking: (UI redress attack) a malicious technique of tricking a web user into clicking on something different from what the user perceives they are clicking on. Thus, potentially revealing confidential information or taking control of their computer.
+
+> similar: LikeJacking, CursorJacking
