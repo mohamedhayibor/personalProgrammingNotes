@@ -359,3 +359,25 @@ OpenId: an HTTP-based protocol that uses identity providers (Google, FB, Twitter
 ClickJacking: (UI redress attack) a malicious technique of tricking a web user into clicking on something different from what the user perceives they are clicking on. Thus, potentially revealing confidential information or taking control of their computer.
 
 > similar: LikeJacking, CursorJacking
+
+4/15
+-----------
+
+##### Nodejs Child processes
+
+exec syntax: require('child_process').exec(command, [options], callback)
+
+```js
+var exec = require('child_process').exec;
+var child = exec('node -v');
+child.stdout.on('data', data => {
+    console.log('stdout: ' + data); // stdout: v5.6.0
+});
+child.stderr.on('data', data => {
+    console.log('stdout: ' + data);
+});
+child.on('close', code => {
+    console.log('closing code: ' + code); // closing code: 0
+});
+
+```
