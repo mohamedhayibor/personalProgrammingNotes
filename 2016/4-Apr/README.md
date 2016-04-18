@@ -381,3 +381,46 @@ child.on('close', code => {
 });
 
 ```
+4/16
+-------
+DNS prefetching: a feature by which browsers proactively perform domain name resolution on both links that the user may choose to follow as well as URLs for items referenced by the document (css, js, ...).
+
+> DOne in the background, so that DNS is most likely resolved the the time referenced items are needed.
+
+> By default prefetching of embedded link hostnames is not performed on documents loaded over HTTPS.
+
+###### Controlling
+
+A server can opt out of DNS prefetching by serving content by setting `x-dns-prefetch-control` to `off`.
+
+For individual documents, using http-equiv attribute is an alternative:
+```html
+<meta http-equiv="x-dns-prefetch-control" content="off"> <!-- "on" to turn on -->
+```
+The content provider can force the lookup of specific hostnames without specific anchors:
+```html
+<link rel="dns-prefetch" href="http://www.link.com">
+```
+
+http-equiv attribute: defines the pragma (defined using the content) that can alter servers and user-agents behavior. example:
+
+```html
+<!-- For Google Chrome Frame that enhance IE browsing experience (using Google Chrome rendering technology: latest HTML5 features) -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<!-- refreshing document every 30s -->
+<meta http-equiv="refresh" content="30">
+```
+
+
+(css prop) justify-content: property defines how the browser distributes space between and around flex items along the main-axis of their container.
+(alignment done after the lengths and auto margins are applied)
+
+```css
+/* pack elements around the center */
+justify-content: center;
+
+/* distribute items evenly, equal space around them */
+justify-content: evenly-spaced;
+
+```
+
