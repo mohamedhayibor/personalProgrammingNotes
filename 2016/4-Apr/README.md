@@ -424,3 +424,33 @@ justify-content: evenly-spaced;
 
 ```
 
+4/17
+-------
+
+E6 curry example:
+```js
+const curryAdd = (x) => (y) => (z) => x + y + z;
+
+curryAdd(3)(1)(2) // 6
+```
+Partial application (function): the process of fixing the number of arguments to a function, producing another function of smaller arity.
+
+Practical example: calling a carried function with only some of its arguments.
+
+a combinator: a higher order function that uses only function application and earlier combinators to define the result from its arguments.
+
+Once function decorator:
+```js
+const once = (fn) => {
+  let called = false;
+
+  return () => (called) ? void 0: ((called = true), fn.apply(this, arguments));
+}
+
+const askedOnBlindDate = once( () => 'Executed!');
+
+console.log( askedOnBlindDate() ) // 'Executed'
+console.log( askedOnBlindDate() ) // undefined
+console.log( askedOnBlindDate() ) // undefined
+
+```
