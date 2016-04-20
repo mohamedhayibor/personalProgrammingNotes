@@ -454,3 +454,61 @@ console.log( askedOnBlindDate() ) // undefined
 console.log( askedOnBlindDate() ) // undefined
 
 ```
+
+4/18
+--------
+
+y-combinator enables you to make recursive functions without needing to bind a function to a name in an environment.
+
+> with fixed-point combinators it's possible to compute everything computable without binding names.
+
+```js
+function Y (f) {
+  return (function(x) {
+    return f(function (v) {
+      return x(x)(v);
+    })
+  })(function (x) {
+    return f(function (v) {
+      return x(x)(v);
+    })
+  })
+}
+------
+// es6
+const Y = f => (x => f(v => x(x)(v)))(x => f(v => x(x)(v)))
+
+
+const factorial = Y(function (fac) {
+  return function (n) {
+    return (n === 0 ? 1 : n * fac(n - 1));
+  }
+})
+
+console.log( factorial(10) ) // 3628800
+
+```
+
+a function decorator takes a function as an argument returns a function with a semantic relationship between the two.
+
+> by default lean towards writing function decorators in a "context agnostic" way.
+
+4/19
+------
+Function.prototype.bind: creates a binding that cannot be overridden. You cannot override the context of a function that has already been bound unless unbound.
+
+a trampoline: a loop that iteratively invokes thunk-returning functions (lisp style). (- also associated with jumps, different code paths in low level programming).
+
+```js
+function tramp(f) {
+    var result = f;
+    while(true) {
+        if (typeof(result) == 'function') {
+            result = result();
+        } else {
+            return result;
+        }
+    }
+}
+
+```
