@@ -512,3 +512,30 @@ function tramp(f) {
 }
 
 ```
+4/20
+--------
+
+(Publish-subscribe): pub/sub a messaging pattern where senders of messages (publishers), do not program the messages to be sent directly to specific receivers (subscribers), but instead characterize published messages into classes without knowledge of which subscribers.
+
+Advantages:
+
+1. Loose coupling
+2. Scalability
+
+Disadvantages:
+
+1. Inflexible Semantic coupling
+2. Message Delivery Issues
+
+--
+a computer cluster consists of  a set of loosely or tightly connected computers that work together (a single system != grid computing)
+
+Grid computing: a distributed system with non-interactive workloads that involve a large number of files. (each computer is set to perform a different task/application)
+
+Distributed system: a software system in which components located on networked computers communicate and coordinate their actions by passing messages. Significant characteristics:
+
+1. concurrency of components.
+2. lack of global clock.
+3. independent failure of components.
+
+Dining philosophers problem: refer to problems in concurrent algorithm designs to illustrate synchronization issues and techniques for resolving them.
