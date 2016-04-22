@@ -539,3 +539,10 @@ Distributed system: a software system in which components located on networked c
 3. independent failure of components.
 
 Dining philosophers problem: refer to problems in concurrent algorithm designs to illustrate synchronization issues and techniques for resolving them.
+
+4/21
+--------
+
+(OTP): The open telecom platform: a development system platform for building telecommunications applications, and a control system platform for running them.
+
+MQTT protocol: light weight messaging protocol for use on top of the TCP/IP protocol. (small code footprint due to limited bandwidth).
