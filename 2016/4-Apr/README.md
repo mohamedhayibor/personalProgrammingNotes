@@ -546,3 +546,19 @@ Dining philosophers problem: refer to problems in concurrent algorithm designs t
 (OTP): The open telecom platform: a development system platform for building telecommunications applications, and a control system platform for running them.
 
 MQTT protocol: light weight messaging protocol for use on top of the TCP/IP protocol. (small code footprint due to limited bandwidth).
+
+4/22 
+--------
+
+Domain Name System (DNS): a hierarchical decentralized naming system for computers, services connected to the internet or a private network.
+
+Interpreted means that the code is executed by an interpreter rather than a compiler. (tradeoff: flexibility rather than executing safety)
+
+Object-oriented means the language supports encapsulation (data and behavior packed together).
+
+4/23 (beginning the 7 languages in 7 weeks)
+---------
+##### Ruby
+Just about everything in ruby is an object, down to each individual number.
+
+you can open a class up again and modify it. (new objects and existing objects)
