@@ -562,3 +562,42 @@ Object-oriented means the language supports encapsulation (data and behavior pac
 Just about everything in ruby is an object, down to each individual number.
 
 you can open a class up again and modify it. (new objects and existing objects)
+
+4/24
+------
+
+Local variable names and method names are nearly identical. 
+
+- Class variables are shared between a class, its subclasses and its instances.
+
+> a class variable must start with a @@ 
+
+> global variables start with $
+
+Always have a receiver when dealing with method assignments, otherwise ruby assumes you are assigning to a local variable.
+
+> ||= : makes an assignment if the value was nil or false
+
+> &&= : makes an assignment if the value was not nil or false
+
+modules serve two purposes in Ruby: namespacing and mix-in functionality.
+
+Mix-in functionality allows sharing common methods across multiple classes or modules.
+
+A module may be reopened any number of times to add, change, or remove functionality.
+
+```rb
+if __FILE__ == $0
+# __FILE__ > magic variable that contains the name of the current file.
+# $0 > the name of the file used to start the program.
+
+# unless == if not
+
+# until === !while
+```
+
+> everything but nil and false evaluate to true.
+
+> Ruby does type checking (duck-typing) at runtime, not compile time.
+
+Design philosophie (duck-typing): code to interfaces rather than implementations.
