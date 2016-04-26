@@ -556,7 +556,7 @@ Interpreted means that the code is executed by an interpreter rather than a comp
 
 Object-oriented means the language supports encapsulation (data and behavior packed together).
 
-4/23 (beginning the 7 languages in 7 weeks)
+4/23 (beginning the chocolate007 project)
 ---------
 ##### Ruby
 Just about everything in ruby is an object, down to each individual number.
@@ -601,3 +601,12 @@ if __FILE__ == $0
 > Ruby does type checking (duck-typing) at runtime, not compile time.
 
 Design philosophie (duck-typing): code to interfaces rather than implementations.
+
+4/25
+------
+Static analysis: analysis of computer software performed without actually running programs.
+
+Fuzzing: fuzz testing: a software testing technique, (semi) automated that involves providing, unexpected, random data, to the input of the computer program.
+
+trace: measure of how long something takes, e.g. (db query, network request)
+Transaction: a group of traces e.g (traces associated with incoming HTTP request)
