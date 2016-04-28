@@ -610,3 +610,9 @@ Fuzzing: fuzz testing: a software testing technique, (semi) automated that invol
 
 trace: measure of how long something takes, e.g. (db query, network request)
 Transaction: a group of traces e.g (traces associated with incoming HTTP request)
+
+4/26
+------
+A Distributed Hash Table (DHT) is class of decentralized distributed systems that provides a lookup service similar to a hash table. (any participating node can efficiently retrieve the value associated with a given key.
+
+
