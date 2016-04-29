@@ -624,4 +624,37 @@ Linked list: a linear collection of data elements (nodes).
 Arrays allocate memory for all its elements lumped together as one block of memory.
 Linked lists allocate space of each element (node) separately in its own block.
 
+4/28
+--------------
+Data structure: a systematic way of organizing data for efficient use.
 
+Characteristics:
+- Interface: the set of operations that a data structure supports.
+- implementation: (potential tradeoffs: correctness, time and space complexity)
+
+Examples of Divide and conquer approach: (Mergesort, quick sort, Binary search...)
+
+closest pair of points problem: (given n points in metric space, find a pair of points with the smallest distance between them)
+
+4/29
+-------------------
+BFS (Breadth First Search) can be used to solve a variety of problems:
+
+1. finding all the vertices reachable from a vertex v,
+2. finding whether a unidirect graph is connected
+3. the shortest path from a vertex v
+4. determining if a graph is bipartite
+5. bounding the diameter of a unidirect graph
+6. finding the maximum flow of a network
+
+BFS traversal rules:
+
+1: visit adjacent unvisited vertex. Mark it visited. Insert it in a queue.
+2: if no adjacent vertex found, remove the first vertex from the queue.
+3: repeat 1 & 2 until queue is empty.
+
+
+Binary heap: a complete binary tree which satisfies the heap ordering property:
+
+1. the min heap: the value of each node is greater than or equal to the value of its parent, with the minimum value element at the root.
+2. the max heap: the value of each node is less or equal to the value of its parent, with the maximum value element at the root.
