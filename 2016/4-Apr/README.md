@@ -615,4 +615,13 @@ Transaction: a group of traces e.g (traces associated with incoming HTTP request
 ------
 A Distributed Hash Table (DHT) is class of decentralized distributed systems that provides a lookup service similar to a hash table. (any participating node can efficiently retrieve the value associated with a given key.
 
+4/27
+-----------
+
+Linked list: a linear collection of data elements (nodes).
+>  allows for efficient insertion and deletion of elements.
+
+Arrays allocate memory for all its elements lumped together as one block of memory.
+Linked lists allocate space of each element (node) separately in its own block.
+
 
