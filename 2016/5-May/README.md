@@ -111,3 +111,18 @@ RNN: recurrent neural network: a class of artificial neural network where connec
 stochastic gradient descent can be used to speed up learning. The idea is to estimate the gradient Delta C by computing Delta Cx for a small sample of randomly chosen inputs.
 
 [nnr](http://neuralnetworksanddeeplearning.com/chap1.html)
+
+5/12
+--------------
+
+Uset represents an unordered set of unique elements which mimic a mathematical set.
+
+HMAC: Hash based Message Authentification code.
+
+>  uses a cryptographic rkey in conjunction with a hash function.
+
+(use case: can be used to prevent spamming)
+
+Beam Search: a heuristic search algorithm (solving a problem more quickly when classic methods are too slow)
+
+> explores a graph by expanding the most promising node in a limited set.
