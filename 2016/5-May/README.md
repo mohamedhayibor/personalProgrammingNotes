@@ -126,3 +126,152 @@ HMAC: Hash based Message Authentification code.
 Beam Search: a heuristic search algorithm (solving a problem more quickly when classic methods are too slow)
 
 > explores a graph by expanding the most promising node in a limited set.
+
+5/24
+-------
+Tips from [Sindresorhus awesome npm list](https://github.com/sindresorhus/awesome-npm/blob/master/readme.md)
+
+### Update to the latest npm version
+
+```
+$ npm install --global npm
+```
+
+### Command aliases
+
+- `npm i ` → `npm install`
+- `npm i -S` → `npm install --save`
+- `npm i -D` → `npm install --save-dev`
+- `npm t` → `npm test`
+- `npm it` → `npm install && npm test`
+- `npm r` → `npm uninstall`
+
+### Shell aliases
+
+Speed up your common npm tasks.
+
+In your `.zshrc`/`.bashrc`:
+
+```sh
+alias ni='npm install'
+alias nis='npm install --save'
+alias nid='npm install --save-dev'
+alias nig='npm install --global'
+alias nt='npm test'
+alias nit='npm install && npm test'
+alias nk='npm link'
+alias nr='npm run'
+alias nf='npm cache clean && rm -rf node_modules && npm install'
+```
+
+
+### Add to package.json when installing
+
+You can have npm add packages to package.json when installing by specifying the `--save`/`-S` flag for `dependencies` and `--save-dev`/`-D` for `devDependencies`:
+
+```
+$ npm install --save chalk
+```
+
+### Run scripts
+
+You can easily [run scripts](https://docs.npmjs.com/cli/run-script) using npm by adding them to the `"scripts"` field in package.json and run them with `npm run <script-name>`. Run `npm run` to see available scripts. Binaries of locally install packages are made available in the [PATH](https://en.wikipedia.org/wiki/PATH_(variable)), so you can run them by name. `npm run foo` will also run `prefoo` and `postfoo` if defined.
+
+```json
+{
+	"name": "awesome-package",
+	"scripts": {
+		"cat": "cat-names"
+	},
+	"dependencies": {
+		"cat-names": "^1.0.0"
+	}
+}
+```
+
+```
+$ npm run cat
+Max
+```
+
+All package.json properties are [exposed](https://docs.npmjs.com/misc/scripts#packagejson-vars) as environment variables:
+
+```json
+{
+	"name": "awesome-package",
+	"scripts": {
+		"name": "echo $npm_package_name"
+	}
+}
+```
+
+```
+$ npm run name
+awesome-package
+```
+
+
+### Link local packages
+
+Sometimes it can be useful to have a local version of a package as a dependency. You can use `npm link` to link one local package into another. Run `npm link` in the package you want to use. This creates a global reference. Then go into your original package and run `npm link <package-name>` to link in the other package.
+
+```
+$ cd rainbow
+$ npm link
+$ cd ../unicorn
+$ npm link rainbow
+```
+
+You can now use `rainbow` as a dependency in the `unicorn` package.
+
+### Install a package from GitHub
+
+npm supports using a shorthand for installing a package directly from a GitHub repo:
+
+```
+$ npm install sindresorhus/chalk
+```
+
+Let's target a specific commit as master is a moving target:
+
+```
+$ npm install 'sindresorhus/chalk#51b8f32'
+```
+
+Specify either a commit SHA, branch, tag, or nothing.
+
+
+### Install a specific version of a package
+
+```
+$ npm install chalk@1.0.0
+```
+
+
+### List top-level installed packages and their version
+
+```
+$ npm ls --depth=0
+```
+
+### Command help
+
+Get help docs for a command:
+
+```
+$ npm help <command>
+```
+
+Example:
+
+```
+$ npm help install
+```
+
+### Standalone version of a package
+
+Quickly get a standalone version of a package that is browserified and usable in the browser.
+
+```
+https://wzrd.in/standalone/<package-name>[@<version>]
+```
