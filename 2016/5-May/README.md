@@ -275,3 +275,16 @@ Quickly get a standalone version of a package that is browserified and usable in
 ```
 https://wzrd.in/standalone/<package-name>[@<version>]
 ```
+
+5/26
+--------------
+
+[Ansi character sets](https://msdn.microsoft.com/en-us/library/aa245259(v=vs.60).aspx)
+
+```js
+// code to remove them - taken from npm/cash/util/stripAnsi.js
+module.exports = function (str) {
+  const ansiRegex = /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g;
+  return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
+};
+```
