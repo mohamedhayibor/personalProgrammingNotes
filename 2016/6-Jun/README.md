@@ -16,3 +16,8 @@ Helpful build scripts for electron apps [active-collab-desktop](https://github.c
     "build-win": "npm run build-win32 && npm run build-win64"
 
 ```
+
+Quick centering tips with semantic ui:
+> `ui center aligned grid`: center content in a grid colum
+
+> `ui right floated image`: to float an image
