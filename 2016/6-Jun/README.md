@@ -22,4 +22,7 @@ Quick centering tips with semantic ui:
 
 > `ui right floated image`: to float an image
 
-hack to include jQuery in electron project.
+hack to include jQuery in electron project:
+```js
+window.$ = window.jQuery = require('./scripts/jquery-2.1.1.min.js');
+```
