@@ -21,3 +21,5 @@ Quick centering tips with semantic ui:
 > `ui center aligned grid`: center content in a grid colum
 
 > `ui right floated image`: to float an image
+
+hack to include jQuery in electron project.
