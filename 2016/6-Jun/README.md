@@ -26,3 +26,19 @@ hack to include jQuery in electron project:
 ```js
 window.$ = window.jQuery = require('./scripts/jquery-2.1.1.min.js');
 ```
+6/10
+--------
+[ngrok](https://ngrok.com/) commands
+```
+COMMANDS:
+   authtoken	save authtoken to configuration file
+   credits	prints author and licensing information
+   http		start an HTTP tunnel
+   start	start tunnels by name from the configuration file
+   tcp		start a TCP tunnel
+   test		test ngrok service end-to-end
+   tls		start a TLS tunnel
+   update	update ngrok to the latest version
+   version	print the version string
+   help		Shows a list of commands or help for one command
+```
