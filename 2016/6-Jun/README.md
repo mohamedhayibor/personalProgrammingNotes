@@ -42,3 +42,12 @@ COMMANDS:
    version	print the version string
    help		Shows a list of commands or help for one command
 ```
+6/11
+-------------
+electron renderer process:
+
+![](http://res.cloudinary.com/masteryoperation/image/upload/v1465662508/renderer_process_hezpv4.jpg)
+
+![](http://res.cloudinary.com/masteryoperation/image/upload/v1465662508/rendermany_nxuiur.jpg)
+
+
