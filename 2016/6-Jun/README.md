@@ -49,5 +49,12 @@ electron renderer process:
 ![](http://res.cloudinary.com/masteryoperation/image/upload/v1465662508/renderer_process_hezpv4.jpg)
 
 ![](http://res.cloudinary.com/masteryoperation/image/upload/v1465662508/rendermany_nxuiur.jpg)
+
 source: github youtube presentation
+
+6/14
+-----
+BLOB: Binary Large Object stored as a single entity in a database management system.
+
+> Git Object: single key-value data store.
 
