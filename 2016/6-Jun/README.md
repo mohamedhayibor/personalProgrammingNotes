@@ -58,3 +58,7 @@ BLOB: Binary Large Object stored as a single entity in a database management sys
 
 > Git Object: single key-value data store.
 
+6/20
+------
+CMYK: (cyan, magenta, yellow, key): a substractive color model, used in color printing also used to describe the printing process.
+
