@@ -68,3 +68,5 @@ Bitmap: a regular rectangular mesh of cells (pixels), containing a colour value.
 2. information depth (colour depth) / pixels
 
 Use case: used to represent images on the computer.
+
+Uint8ClampedArray: represents an array of 8 bit unsigned integers clamped to 0-255. If a out-of-range value is specified it is replaced by 0 or 255. The contents are initialized to 0. Cannot change size after creation.
