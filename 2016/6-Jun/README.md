@@ -63,6 +63,7 @@ BLOB: Binary Large Object stored as a single entity in a database management sys
 CMYK: (cyan, magenta, yellow, key): a substractive color model, used in color printing also used to describe the printing process.
 
 Bitmap: a regular rectangular mesh of cells (pixels), containing a colour value. They contian two params:
+
 1. number of pixels
 2. information depth (colour depth) / pixels
 
