@@ -75,3 +75,6 @@ Uint8ClampedArray: represents an array of 8 bit unsigned integers clamped to 0-2
 ----------------
 Fuzzy searching: approximate string matching: technique of finding strings that match a pattern rather than literally.
 
+6/29
+--------
+A struct is complex data type declaration that defines a physical group of linked variables to be placed under one name in a block of memory.
