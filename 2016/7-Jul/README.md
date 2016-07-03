@@ -223,3 +223,123 @@ Function pointers: variable bindings that point to functions.
 ```
 let f: fn(i32) -> i32;
 ```
+
+7/3
+-------
+Rust has a bunch of primitives (built in the lang)
+
+##### Booleans
+
+##### standard if statement
+
+```
+let x = 5;
+
+if x == 5 {
+    println!("x is five!");
+} else if x == 6 {
+    println!("x is six!");
+} else {
+    println!("x is not five or six :(");
+}
+```
+##### Loops
+
+> while, for, loop
+
+> instead of `while true` use `loop`. The more info we can give to the compiler, the better it can do with safety, code generation.
+
+```
+for x in 0..10 {
+    println!("{}", x); // x: i32
+}
+```
+
+> You can use .enumerate() if you need to keep track how many times you've looped.
+
+```
+for (i,j) in (5..10).enumerate() {
+    println!("i = {} and j = {}", i, j);
+}
+```
+> break or return will break the loop. `continue` will jump to the next iteration.
+
+##### Specifying break or continue for a specific loop
+```
+'outer: for x in 0..10 {
+    'inner: for y in 0..10 {
+        if x % 2 == 0 { continue 'outer; } // continues the loop over x
+        if y % 2 == 0 { continue 'inner; } // continues the loop over y
+        println!("x: {}, y: {}", x, y);
+    }
+}
+```
+
+##### Vectors
+
+> a vector is a dynamic or growable array, implemented as the standard library Vec<T>.Vectors always allocate their data on the heap.
+
+> Vectors store their contents as contiguous arrays.of T on the heap. The size of T must be known at compile time. (how many bytes needed to store a T)
+
+> Also important that you must index with usize type:
+```
+let i: usize = 0;
+```
+
+##### Iterating:
+You cannot iterate over a vector again if you have already taken ownership of it.
+
+> You can iterate multiple times by just referencing while iterating.
+
+```
+let mut v = vec![1, 2, 3, 4, 5];
+
+for i in &v {
+    println!("A reference to {}", i);
+}
+
+for i in &mut v {
+    println!("A mutable reference to {}", i);
+}
+
+for i in v {
+    println!("Take ownership of the vector and its element {}", i);
+}
+```
+
+##### Ownership
+
+> Ownership is how Rust achieves `Memory Safety`
+
+The ownership system:
+
+* Ownership
+* Borrowing
+* Lifetimes
+
+Rust achieves great safety and speed through `Zero-cost abstractions`, which means abstractions cost as little as possible to make them work.
+
+> Variable bindings have ownership to what they are bound to.
+
+> when a binding goes out of scope, Rust will free the bound resources.
+
+vectors behave like arrays except their size may change by pushing more elements into them.
+
+###### To remember:
+
+> when ownership is transferred to another binding, you cannot use the original binding.
+
+> All primitive types implement the Copy trait and their ownership is therefore not moved.
+
+> A binding that borrows something does not deallocate the resource when it goes out of scope.
+
+#### &mut references
+
+A mutable reference allows you to mutate the resource you are borrowing.
+
+##### Rust borrowing rules
+
+1. Any borrows must last for a scope no greater than the owner's.
+2. ( one or more references (&T) to a resource || exactly one mutable reference (&mut T) )
+
+> There is `data race` when two or more pointers access the same memory location at the same time, where at least one of them is writing and the operations are not synchronized.
