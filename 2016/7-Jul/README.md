@@ -343,3 +343,291 @@ A mutable reference allows you to mutate the resource you are borrowing.
 2. ( one or more references (&T) to a resource || exactly one mutable reference (&mut T) )
 
 > There is `data race` when two or more pointers access the same memory location at the same time, where at least one of them is writing and the operations are not synchronized.
+
+7/4 (happy 4th of july :sunglasses:)
+--------
+To fix the problem of dangling pointers, Rust provides us with explicit references:
+
+```
+// explicit
+fn bar<'a>(x: &'a i32) {
+}
+```
+> `a` reads `the lifetime a`
+
+
+[Read more of multiple lifetimes](https://doc.rust-lang.org/book/lifetimes.html)
+
+> The mutability of a struct is its binding.
+
+```
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+let mut a = Point { x: 5, y: 6 };
+
+a.x = 10;
+
+let b = Point { x: 5, y: 6};
+
+b.x = 10; // error: cannot assign to immutable field `b.x`
+```
+
+##### Structs
+Structs are a way of creating more complex data types.
+
+> By convention structs are capitalized and camelcased.
+
+> the values of structs are immutable by default.
+
+[Read more on structs](https://doc.rust-lang.org/book/structs.html)
+
+##### Enums
+
+A value of an enum can match any of the variants.
+
+an enum constructor can be used like a function: [link](https://doc.rust-lang.org/book/enums.html)
+
+#### Match 
+
+Handy when dealing with complex if - elif conditions (behaves like switch in other languages):
+
+```
+let x = 5;
+
+match x {
+    1 => println!("one"),
+    2 => println!("two"),
+    3 => println!("three"),
+    4 => println!("four"),
+    5 => println!("five"),
+    _ => println!("something else"),
+}
+```
+
+Form: `	val => expression`
+
+Another powerful feature of enums is the possibility to process the possible variants.
+
+> with the pipe `|` > you can match more pattern 
+
+> equivalent to  `||` in javascript.
+
+```
+let x = 1;
+
+match x {
+    1 | 2 => println!("one or two"),
+    3 => println!("three"),
+    _ => println!("anything"),
+}
+```
+
+> In the case of compound data types you destruction values inside the pattern.
+
+```
+match origin {
+    Point { x, y } => println!("({},{})", x, y),
+}
+```
+
+> you can bind values with @:
+```
+let x = 1;
+
+match x {
+    e @ 1 ... 5 => println!("got a range element {}", e),
+    _ => println!("anything"),
+}
+```
+
+##### Method Syntax
+
+Instead of `baz(bar(foo))` we can have the same type of operation with Rust impl keyword > foo.bar().baz()
+
+```
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+fn main() {
+    let c = Circle { x: 0.0, y: 0.0, radius: 2.0 };
+    println!("{}", c.area());
+}
+```
+
+> Gist > make a struct that represents a circle then write an impl block and inside it define a method.
+
+> Methods take a special first parameter, which are 3 variants: self, &self, &mutself ( self -> value on the stack, &self -> reference, &mut self -> mutable reference)
+
+> Default to using `&self` instead of taking ownership and taking immutable references over mutable ones.
+
+##### Chaining methods exple
+
+```rs
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+
+    fn grow(&self, increment: f64) -> Circle {
+        Circle { x: self.x, y: self.y, radius: self.radius + increment }
+    }
+}
+
+fn main() {
+    let c = Circle { x: 0.0, y: 0.0, radius: 2.0 };
+    println!("{}", c.area());
+
+    let d = c.grow(2.0).area();
+    println!("{}", d);
+}
+```
+
+##### Associated functions
+
+```
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn new(x: f64, y: f64, radius: f64) -> Circle {
+        Circle {
+            x: x,
+            y: y,
+            radius: radius,
+        }
+    }
+}
+
+fn main() {
+    let c = Circle::new(0.0, 0.0, 2.0);
+}
+```
+
+> associated functions are called with Struct::function() syntax rather ref.method()
+
+##### Builder pattern
+
+> Rust doesn't have method overloading, named arguments, or variable arguments.
+
+```
+struct Circle {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl Circle {
+    fn area(&self) -> f64 {
+        std::f64::consts::PI * (self.radius * self.radius)
+    }
+}
+
+struct CircleBuilder {
+    x: f64,
+    y: f64,
+    radius: f64,
+}
+
+impl CircleBuilder {
+    fn new() -> CircleBuilder {
+        CircleBuilder { x: 0.0, y: 0.0, radius: 1.0, }
+    }
+
+    fn x(&mut self, coordinate: f64) -> &mut CircleBuilder {
+        self.x = coordinate;
+        self
+    }
+
+    fn y(&mut self, coordinate: f64) -> &mut CircleBuilder {
+        self.y = coordinate;
+        self
+    }
+
+    fn radius(&mut self, radius: f64) -> &mut CircleBuilder {
+        self.radius = radius;
+        self
+    }
+
+    fn finalize(&self) -> Circle {
+        Circle { x: self.x, y: self.y, radius: self.radius }
+    }
+}
+
+fn main() {
+    let c = CircleBuilder::new()
+                .x(1.0)
+                .y(2.0)
+                .radius(2.0)
+                .finalize();
+
+    println!("area: {}", c.area());
+    println!("x: {}", c.x);
+    println!("y: {}", c.y);
+}
+```
+
+##### Strings
+
+> A string is a sequence of Unicode scalar values encoded as a stream of UTF 8 bytes. All strings are guaranteed to be a valid encoding UTF-8 sequences.
+
+Rust has two main string types: &str and String.
+
+> &str: string slices: are fixed in size and cannot be mutated.
+
+```
+let mission = "Take over the world";
+```
+A string literal is a string slice that is statically allocated (saved inside our compiled program and exists for the entire duration it runs).
+
+> Any function expecting a string slice will also accept a string literal.
+
+> String literal can span multiple lines.
+
+> Add `\` at the end of a line to trim spaces and newlines.
+
+```
+let str = "Take over\
+
+        ... the World." // => Take over the World.
+```
+
+> You cannot access str directly but only through reference because str is an unsized type which require additional runtime information to be useful.
+
+
+> A String is a heap allocated string. (growable and guaranteed to be UTF8). Usually created with the to_string() method.
+
+> Strings will coerce into &str with an &.
+
+> Viewing a String as a &str is cheap, but converting &str to String involves allocating memory.
+
+> Because strings are valid UTF8 valid they do not support indexing.
+
+You can use indexing in this way:
+
+```
+str.chars().nth( index ).unwrap();
+```
+> without the unwrap, Rust complains about a format error.
+
+If you have a String, you can concatenate a &str to the end of it.
