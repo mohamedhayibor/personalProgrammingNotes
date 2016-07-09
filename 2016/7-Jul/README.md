@@ -631,3 +631,88 @@ str.chars().nth( index ).unwrap();
 > without the unwrap, Rust complains about a format error.
 
 If you have a String, you can concatenate a &str to the end of it.
+
+
+
+Int
+------------
+> get back to `if let` > `while let`
+
+Closures in Rust are also called lambdas.
+
+> Functions that also capture the enclosing environment.
+
+> In Rust their synctax and capabilities make them very convenient for on the fly usage.
+
+1. uses `||` instead `()` around input variables.
+2. both input and return types can be inferred.
+3. input variables must be specified
+4. body delimitation `({})` is optional for single expressions. Required otherwise.
+5. The outer variables may be captured
+6. calling a closure is the same as calling a function
+
+Closures can capture with:
+
+1. by reference &T
+2. by mutable reference &mut T
+3. by value: T
+
+Closures capture variable by enclosing scopes. 
+
+> important: closures require generics.
+
+```
+fn apply<F>(f: F) where
+    F: FnOnce() {
+    f()
+}
+```
+
+> when a closure is created, the compiler automatically creates an unanonimous structure to store the captured variables inside, meanwhile implementing the functionality via one of the traits: Fn, FnMt, FnOnce for this unknown type.
+
+> Because a function can never capture variables, closures are more flexible. Therefore any function that can take a closure as an argument can take a function.
+
+```
+fn call_function<F: Fn()>(f: F) {
+    f()
+}
+
+// Define a simple function to be used as an input.
+fn print() {
+    println!("I'm a function!")
+}
+
+fn main() {
+    // Define a closure similar to the `print()` function above.
+    let closure = || println!("I'm a closure!");
+
+    call_function(closure);
+    call_function(print);
+}
+```
+
+> Fn, FnOnce, FnMut, traits dictate how a closure capture variables from the enclosing scope.
+
+> Returning a closure is only possible by making it concrete. This can be done via boxing: 
+
+1. Fn: normal
+2. FnMut: normal
+3. FnOnce: 
+
+> Iterator::any is a function which when passed an iterator, will return true if any element satisfies the predicate, otherwise false.
+
+```
+// native implementation
+pub trait Iterator {
+    // the type being iterated over
+    type Item;
+
+    // any takes `&mut self` meaning the caller may be borrowed
+    // and modified, but not consumed
+    fn any<F>(&mut self, f: F) -> bool where
+        // `FnMut` meaning any captured variable may at most be modified, not 
+        // consumed. `Self::Item` states it takes arguments to the closure by value
+        F: FnMut(Self::Item) -> bool {} 
+
+}
+```
