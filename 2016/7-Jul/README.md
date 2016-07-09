@@ -716,3 +716,9 @@ pub trait Iterator {
 
 }
 ```
+
+7/8
+-----
+A bit field is a term in CS to store multiple, logical, neighboring bits, where each sets of bits, and single bits can be addressed. 
+
+Within microprocessors: flags (collection of bit fields) are commonly used to control or indicate the intermediate or final state or outcome of different operations.
