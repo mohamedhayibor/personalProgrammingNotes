@@ -672,7 +672,7 @@ fn apply<F>(f: F) where
 
 > Because a function can never capture variables, closures are more flexible. Therefore any function that can take a closure as an argument can take a function.
 
-```
+```rs
 fn call_function<F: Fn()>(f: F) {
     f()
 }
@@ -701,7 +701,7 @@ fn main() {
 
 > Iterator::any is a function which when passed an iterator, will return true if any element satisfies the predicate, otherwise false.
 
-```
+```rs
 // native implementation
 pub trait Iterator {
     // the type being iterated over
@@ -722,3 +722,225 @@ pub trait Iterator {
 A bit field is a term in CS to store multiple, logical, neighboring bits, where each sets of bits, and single bits can be addressed. 
 
 Within microprocessors: flags (collection of bit fields) are commonly used to control or indicate the intermediate or final state or outcome of different operations.
+
+Closures in Rust are also called lambdas.
+
+> Functions that also capture the enclosing environment.
+
+> In Rust their synctax and capabilities make them very convenient for on the fly usage.
+
+1. uses `||` instead `()` around input variables.
+2. both input and return types can be inferred.
+3. input variables must be specified
+4. body delimitation `({})` is optional for single expressions. Required otherwise.
+5. The outer variables may be captured
+6. calling a closure is the same as calling a function
+
+Closures can capture with:
+
+1. by reference &T
+2. by mutable reference &mut T
+3. by value: T
+
+Closures capture variable by enclosing scopes. 
+
+> important: closures require generics.
+
+```rs
+fn apply<F>(f: F) where
+    F: FnOnce() {
+    f()
+}
+```
+
+> when a closure is created, the compiler automatically creates an unanonimous structure to store the captured variables inside, meanwhile implementing the functionality via one of the traits: Fn, FnMt, FnOnce for this unknown type.
+
+> Because a function can never capture variables, closures are more flexible. Therefore any function that can take a closure as an argument can take a function.
+
+```rs
+fn call_function<F: Fn()>(f: F) {
+    f()
+}
+
+// Define a simple function to be used as an input.
+fn print() {
+    println!("I'm a function!")
+}
+
+fn main() {
+    // Define a closure similar to the `print()` function above.
+    let closure = || println!("I'm a closure!");
+
+    call_function(closure);
+    call_function(print);
+}
+```
+
+> Fn, FnOnce, FnMut, traits dictate how a closure capture variables from the enclosing scope.
+
+> Returning a closure is only possible by making it concrete. This can be done via boxing: 
+
+1. Fn: normal
+2. FnMut: normal
+3. FnOnce: 
+
+> Iterator::any is a function which when passed an iterator, will return true if any element satisfies the predicate, otherwise false.
+
+```rs
+// native implementation
+pub trait Iterator {
+    // the type being iterated over
+    type Item;
+
+    // any takes `&mut self` meaning the caller may be borrowed
+    // and modified, but not consumed
+    fn any<F>(&mut self, f: F) -> bool where
+        // `FnMut` meaning any captured variable may at most be modified, not 
+        // consumed. `Self::Item` states it takes arguments to the closure by value
+        F: FnMut(Self::Item) -> bool {} 
+
+}
+```
+
+###### High order functions
+
+Rust Hofs: functions that take one or more functions and/or produce more useful function. Hofs and lazy iterators give Rust its functional flavor.
+
+By default, the items in a module have private visibility, but this can be overidden with the pub modifier.
+
+> structs have an extra level of visibility with their fields. The divisibility defaults to private and can be overridden with the pub modifier. This visibility only matters when a struct is accessed from outside the module where it is defined and has the goal of hiding information (encapsulation).
+
+> However, structs with private fields can be created using public constructors. (cannot be accessed though)
+
+
+The use declaration can be used to bind a full path to a new name, for easier access.
+
+> super and self keywords > can be used in the path to remove ambiguity when accessing items and to prevent unenecessary hardcoding of paths.
+
+> an attribute is metadata applied to some module, crate or item. This meta data can be used:
+
+1. conditional compilation of code
+2. set crate name, version and type (binary or library)
+3. disable lints
+4. enable compiler features (glob imports)
+5. link to a foreign library
+6. mark functions as unit tests
+7. mark functions that will be part of a benchmark
+
+#![attribute] applies to whole crate (without "!") > applies to a module or item.
+
+> When working with with generics, the type parameters often use traits as bounds to stipulate what functionality a type implements.
+
+```rs
+fn printer<T: Display>(t: T) {
+     println!("{}", t);
+}
+```
+
+> Bounding restricts the generic to types that conform to the bounds.
+
+> A consequence of how bounds work is that even if a trait doesn't include any functionality, you can still use it as a bound. `Eq` and `Ord` are examples of such traits from std library.
+
+> Multiple bounds can be applied with a `+`. Like normal, different types are seperated with `,`
+
+```rs
+use std::fmt::{Debug, Display};
+
+fn compare_prints<T: Debug + Display>(t: &T) {
+    println!("Debug: `{:?}`", t);
+    println!("Display: `{}`", t);
+}
+
+fn compare_types<T: Debug, U: Debug>(t: &T, u: &U) {
+    println!("t: `{:?}", t);
+    println!("u: `{:?}", u);
+}
+```
+
+> a bound can also be expressed using a where clause immediately before the opening {, rather than at the type's first mention. `Where` clauses can also apply bounds to arbitrary types, rather than just parameters.
+
+```rs
+use std::fmt::Debug;
+
+trait PrintInOption {
+    fn print_in_option(self);
+}
+
+impl<T> PrintInOption for T where
+    Option<T>: Debug {
+    fn print_in_option(self) {
+        println!("{:?}", Some(self));
+    }
+}
+
+fn main() {
+    let vec = vec![1, 2, 3];
+
+    vec.print_in_option();
+}
+```
+
+> "Associated items" refers to the set of rules pertaining to items of various types. It is an extension to `trait` generics, and allows traits to internally define new items.
+
+7/13
+--------
+
+When multiple failure points may exist an option can be replaced with an more general : 
+
+```rs
+Result<T, E>
+```
+
+1. Ok(T): an element T was found
+2. Err(E): an error E was found
+
+Result also contains `unwrap` method which returns T or panics
+
+Result aliasing expl:
+
+```rs
+type AliasedResult<T> = result::Result<T, ParseIntError>;
+```
+
+Any type that implements the Eq and Hash traits can be a key in `HashMap`. This includes: 
+
+1. bool (not helpful - only two options)
+2. int, uint 
+3. String and &str (You can have a `HashMap` keyed by `String` and call `.get()` with a `&str`
+
+> Important: `f32`, `f64` do not implement `Hash`
+
+> You can easily implement `Eq` `Hash` for a custom type with jus one line:
+
+```rs
+#[derive(PartialEq, Eq, Hash)]
+```
+
+> `HashSet`: a HashMap where we just care about the keys (`HashSet<T>` is, in actuality just wrapper around `HashMap<T, ()>`. The main advantage is that it guarantees to not have duplicate elements.
+
+If you insert a value that is already present, then the new value will replace the old.
+
+Sets have 4 primary operations:
+
+1. union: get all the unique elements in both sets.
+2. difference: get all the elements that are on the first set but not on the second
+3. intersection: elements in both sets
+4. symmetric_difference: all elements in on set or the other but not both.
+
+
+Rust provides a mechanism for spawning native OS via the `spawn` function.
+
+```rs
+let mut children = vec![];
+
+    for i in 0..NTHREADS {
+        // Spin up another thread
+        children.push(thread::spawn(move || {
+            println!("this is thread number {}", i)
+        }));
+    }
+```
+
+> The threads are scheduled by the OS
+
+Rust provides asynchronous channels for communicating between threads. Channels allow a unidirectional flow of information between two end-points: the sender - the receiver.
