@@ -944,3 +944,22 @@ let mut children = vec![];
 > The threads are scheduled by the OS
 
 Rust provides asynchronous channels for communicating between threads. Channels allow a unidirectional flow of information between two end-points: the sender - the receiver.
+
+7/17
+---------
+The Path struct represents file paths in the underlying filesystem:
+
+* `posix::Path`: for UNIX-like systems
+* `windows::Path`: for windows
+
+A path can be created from almost any type that implements the `BytesContainer` trait, like a string, and provides several methods to get information from the file/path directory the path points to.
+
+The file struct represents a file that has been opened (it wraps a file descriptor), and gives reds or write access to the underlying system.
+
+> The File methods return the io::Result<T> an alias of Result<T, io::Error>
+
+> When a `Process` goes out of scope, its `drop` method will wait until the child process finishes before releasing the resource.
+
+Rust provides a Foreign Function Interface (FFI) to C libraries.
+
+> Foreign functions must be declared inside an extern block annoted with a `#[link]` attribute containing the name of the foreign library.
