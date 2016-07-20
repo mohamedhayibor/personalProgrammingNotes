@@ -963,3 +963,143 @@ The file struct represents a file that has been opened (it wraps a file descript
 Rust provides a Foreign Function Interface (FFI) to C libraries.
 
 > Foreign functions must be declared inside an extern block annoted with a `#[link]` attribute containing the name of the foreign library.
+
+
+7/20
+--------
+
+Tuples: a collection of values of different types. Constructed using parentheses `()`
+
+1. elements in tuples are immutable.
+2. Tuple fields cannot be accessed directly.
+3. A tuple must have at least one field.
+
+```rs
+let tup = (4, 5.0, false, "hello"); 
+```
+
+An array is a collection of objects of the same type `T` > stored in contiguous memory > constructed using brackets `[]`
+
+A common use for enums is to create a linked list:
+```
+enum List {
+
+    Cons(u32, Box<List>),
+
+    Nil,
+}
+
+impl List {
+    // Nil is of type List
+    fn new () -> List {
+        Nil
+    }
+
+    fn prepend(self, elem: u32) -> List {
+        Cons(elem, Box::new(self))
+    }
+
+    fn len (&self) -> u32 {
+        match *self {
+            Cons(_, ref tail) => 1 + tail.len(),
+            Nil => 0,
+        }
+    }
+
+    fn stringify(&self) -> String {
+        match *self {
+            Cons(head, ref tail) => {
+                format!("{}, {}", tail.stringify(), head )
+            },
+
+            Nil => {
+                format!("Nil")
+            },
+        }
+    }
+}
+
+fn main () {
+    let mut list = List::new();
+
+    list = list.prepend(1);
+    list = list.prepend(2);
+    list = list.prepend(3);
+
+    print!("list len is {}", list.len() );
+
+    println!("list string is: {}", list.stringify() )
+}
+
+```
+
+All values in Rust are stack allocated by default. Values can be boxed (allocated in the heap) by creating a Box<T>.
+
+> A box is a smart pointer to a heap allocated value of type `T`. When it goes out of scope, its destructor is called, the inner object is destroyed and the memory heap is freed.
+
+> Boxed values can be deferenced using the `*` operator; this removes one layer of indirection.
+
+7/11
+--------
+Rust enforces RAII (Resource Acquisition Is Initialization), so whenever an object goes out of scope, its destructor is called and its owned resouces are freed.
+
+> Because variables are in charge of their own resources, resources can only have one owner.
+
+> Mutability of data can be changed whne ownership is transferred.
+
+> When data is immutably borrowed, it also freezes. Frozen data can't be modified via the original object until all references to it go out of scope.
+
+Data can be immutably borrowed any number of times, but while immutably borrowed, the original data can't be mutably borrowed. On the other hand, only one mutable borrow is allowed at a time. The original data can be borrowed again only after the mutable reference goes out of scope. 
+
+> A `ref` borrow on the left side of an assignment is equivalent to an `&` borrow on the right side.
+
+A lifetime (borrow-checker) uses to ensure all borrows are valid.
+
+Function signatures with lifetimes have a few constraints:
+* any reference must have an annotated lifetime
+* any reference being returned must have the same lifetime as an input or be `static`
+
+> one input reference with lifetime must live at least as long as the function.
+
+A longer lifetime can be coerced into a shorter one so that it works inside a scope normally wouldn't work in. This comes in the form of inferred coercion by Rust compiler, and also in the form of declaring a lifetime difference.
+
+A static lifetime is the longest possible lifetime, and lasts for the lifetime of the running program. A `static` lifetime may also be coerced to a shorter lifetimes.
+
+There are two ways to make a variable with `static` lifetime, both are stored in read-only memory of the binary:
+
+1. Make a constant with the static declaration
+2. Make a string literal which has type: &'static str
+
+> The compiler is capable of providing basic implementations for some traits via the #[derive] attribute 
+
+List of derivable traits:
+
+1. comparison traits: Eq, PartialEq, Ord, PartialOrd
+2. Clone, to create T from &T via copy.
+3. To give 'copy semantics' instead of 'move semantics'
+4. Hash: to compute a hash from &T
+5. Default: to create an empty instance of data type
+6. Zero: to create a zero instance of numeric data type.
+7. to format a value using the {:?} formatter
+
+In Rust many operators can be overloaded via traits. (some operators can be used to accomplish different tasks based on their input arguments)
+
+The arguments of a macro are prefixed by a dollar sign `$` and type annotated with a designator. list:
+
+1. block
+2. expr
+3. ident > used for variable/function names
+4. item
+5. pat (pattern)
+6. path
+7. stmt (statement)
+8. tt (token free)
+9. ty (type)
+
+> and_then() calls its function input with the wrapped value or returns `None` if the `Option` is `None`.
+
+```rs
+fn cookable_v2(food: Food) -> Option<Food> {
+    have_ingredients(food).and_then(have_recipe)
+}
+```
