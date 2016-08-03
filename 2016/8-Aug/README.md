@@ -26,3 +26,19 @@ Mesh networks extends the range of wireless devices by multi-hop relaying traffi
 
 > In public, semi public network settings, encryption techniques such as WEP, WPA are effectively useless. No way to distribute public or shared keys to members of the general public without compromising the security of those keys.
 
+8/2
+-----
+SockAddr (rust-lang) is used to assign an ipv4 or ipv6 address
+
+ToSocketAddrs is used to connect to a port
+
+UDP: a simple connectionless transmission protocol with a minimum of protocol mechanism. (no handshakes dialogues)
+
+* transaction-oriented: DNS - Network Time Protocol
+* datagrams: ip tunnelling, remote procedure protocol, network file system
+
+epoll: a linux kernel system call, (scalable IO event notification mechanism. It's function is to monitor multiple file descriptors to see whether IO is possible on any of them.
+
+Kqueue: provides efficient IO event pipelines between the kernel and userland. (not only handles file descriptor events but also for other notifications such as: file modification monitoring, signals, async IO, child process,
+
+Buffer: an abstraction around byte storage.
