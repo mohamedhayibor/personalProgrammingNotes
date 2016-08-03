@@ -1103,3 +1103,24 @@ fn cookable_v2(food: Food) -> Option<Food> {
     have_ingredients(food).and_then(have_recipe)
 }
 ```
+
+7/18
+---------
+
+Pointers do automatic dereferencing when accessing data structure elements
+```rs
+struct Player {
+    name: &'static str,
+    health: i32,
+}
+
+fn main () {
+    let ps = &Player { name: "Mo", health: 100 };
+    println!("{} == {}", ps.name, (*ps).name);
+}
+```
+
+Things to double check:
+
+1. [ad networks](https://xi.hope.net/schedule.html#-deconstructing-ad-networks-for-fun-and-profit-)
+2. [lime-micro](https://www.crowdsupply.com/lime-micro/limesdr)
