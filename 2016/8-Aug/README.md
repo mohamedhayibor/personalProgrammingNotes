@@ -42,3 +42,24 @@ epoll: a linux kernel system call, (scalable IO event notification mechanism. It
 Kqueue: provides efficient IO event pipelines between the kernel and userland. (not only handles file descriptor events but also for other notifications such as: file modification monitoring, signals, async IO, child process,
 
 Buffer: an abstraction around byte storage.
+
+8/4 Notes from Software defined networks:
+-----
+
+computer networks divided in:
+
+1. data
+2. control
+3. management planes
+
+Data plane represents the protocols used to populate the forwarding tables of the data plane elements.
+
+forward abstraction: allowing any forwarding behavior desired by the network.application.
+
+specification: allowing a network application to express the desired network behavior without being responsible for implementing that behavior.
+
+Network applications: Mac learning - Routing algorithms - Instrusion Detection System- Load balancer.
+
+iptables: a user-space application program that allows a system admin to configure the tables provided by the linux kernel firewall and the chains and rules it stores.
+
+a binary protocol: is expected to be read by a machine rather than a human being as opposed to SMTP, IRC, HTTP.
