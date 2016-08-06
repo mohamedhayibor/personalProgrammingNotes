@@ -63,3 +63,10 @@ Network applications: Mac learning - Routing algorithms - Instrusion Detection S
 iptables: a user-space application program that allows a system admin to configure the tables provided by the linux kernel firewall and the chains and rules it stores.
 
 a binary protocol: is expected to be read by a machine rather than a human being as opposed to SMTP, IRC, HTTP.
+
+8/5
+---
+
+SSH (Secure Shell): a cryptographic network protocol for operating network services securely over an untrusted network. Common applications: remote command line login, uses public-key cryptography to authenticate.
+
+Cookie injection attack (Session hijacking attack): can be mounted during a man-in-the-middle attack who set cookies throughout their invasive session.
