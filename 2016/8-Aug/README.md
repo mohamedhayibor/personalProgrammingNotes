@@ -70,3 +70,19 @@ a binary protocol: is expected to be read by a machine rather than a human being
 SSH (Secure Shell): a cryptographic network protocol for operating network services securely over an untrusted network. Common applications: remote command line login, uses public-key cryptography to authenticate.
 
 Cookie injection attack (Session hijacking attack): can be mounted during a man-in-the-middle attack who set cookies throughout their invasive session.
+
+8/6
+-----
+Steps from a simple HTTP Transaction:
+
+1. DNS lookup
+2. Connect
+3. Send
+4. Wait
+5. Load
+
+![](http://res.cloudinary.com/masteryoperation/image/upload/v1470511302/Screen_Shot_2016-08-06_at_3.21.16_PM_bdquvv.png)
+
+[source](http://blog.catchpoint.com/2010/09/17/anatomyhttp/)
+
+[Good mkt read: How to sell golden hammers](http://c2.com/cgi/wiki?HowToSellGoldenHammers)
