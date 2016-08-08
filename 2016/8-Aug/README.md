@@ -86,3 +86,25 @@ Steps from a simple HTTP Transaction:
 [source](http://blog.catchpoint.com/2010/09/17/anatomyhttp/)
 
 [Good mkt read: How to sell golden hammers](http://c2.com/cgi/wiki?HowToSellGoldenHammers)
+
+8/8
+--------
+Mac addresses are the low-level basics that make your ethernet based network work.
+
+> Each network card has a mac address. If a network adapter is receiving a packet, it is comparing the packet's destination mac address and its own, if they don't match the packet is discarded.
+
+There are special mac addresses.ie: "ff:ff:ff:ff:ff:ff": is the broadcast address and addresses every network adapter in the network.
+
+Ip is a protocol that is used on a layer above the ethernet.
+
+Since ethernet uses MAC addresses, the sender needs to get the MAC address at the next hop. That's where ARP (address resolution protocol) comes in. Once the sender has retrieved the MAC address of the next hop, he writes that target MAC address into the packet and sends the packet.
+
+Use cases for mac addresses:
+
+1. Network switches store a list of MAC addresses seen at every port and only forward packets to the ports that need to see the packet.
+
+2. Wireless access points often use MAC addresses for access control.
+
+3. DHCP servers use the mac address to identify devices and give some devices fixed IP addresses.
+
+[Source: How to geek](http://www.howtogeek.com/169540/what-exactly-is-a-mac-address-used-for/)
