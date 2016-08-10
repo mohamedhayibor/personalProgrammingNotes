@@ -108,3 +108,18 @@ Use cases for mac addresses:
 3. DHCP servers use the mac address to identify devices and give some devices fixed IP addresses.
 
 [Source: How to geek](http://www.howtogeek.com/169540/what-exactly-is-a-mac-address-used-for/)
+
+8/9
+-----
+
+Generic Routing encapsulation (GRE): is a tunnelling protocol (developed by cisco) that can enacapsulate a wide variety of network layer protocols inside virtual point to point links over internet protocol network. (Internet protocol 47)
+
+###### Packets idioms:
+
+Timestamp help in determining which order packets were sent
+
+MSS: the maximum segment size, largest amount of data specified
+
+window scale: the TCP window scale option: is an option used to increase the maximum window size from 65,535 bytes to 1gigabytes
+
+Selective Acknowlegement: SACK option, allows the receiver to acknowledge discountinous blocks of packets which were received correctly. This option enables use of SACK during negotiation. The acknowledgement can specify a number of SACK blocks, where each SACK block is conveyed by the starting and ending sequence number of contiguous range that the receiver correctly received.
