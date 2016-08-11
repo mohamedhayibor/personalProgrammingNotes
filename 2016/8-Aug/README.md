@@ -123,3 +123,8 @@ MSS: the maximum segment size, largest amount of data specified
 window scale: the TCP window scale option: is an option used to increase the maximum window size from 65,535 bytes to 1gigabytes
 
 Selective Acknowlegement: SACK option, allows the receiver to acknowledge discountinous blocks of packets which were received correctly. This option enables use of SACK during negotiation. The acknowledgement can specify a number of SACK blocks, where each SACK block is conveyed by the starting and ending sequence number of contiguous range that the receiver correctly received.
+
+8/10
+---------
+
+Juice Jacking: a cyber attack where a malware is installed or data copied when charging a phone, tablet, or other computer device on public wall charger or kiosks.
