@@ -128,3 +128,29 @@ Selective Acknowlegement: SACK option, allows the receiver to acknowledge discou
 ---------
 
 Juice Jacking: a cyber attack where a malware is installed or data copied when charging a phone, tablet, or other computer device on public wall charger or kiosks.
+
+8/12
+----------
+
+RPC: Remote Procedure Call: when a computer causes a procedure (subroutine) to exectute in another address space (another computer on a shared network) which is coded as if it were a normal (local) procedure call, without the programmer explicitely coding the details for the remote interaction. (the programmer writes essentially the same code whether the subroutine is local to the executing program, or remote).
+
+> RPCs are a form of IPC (inter-process communication).
+
+Aho-Corasick algorithm: a string searching algorithm O(n)
+
+notes from futures rs
+------------------------
+Future: represents a value that might not be available in the future but might be at some point in the future. (Becomes complete due to an event happening somewhere else).
+Reasons of using them:
+
+1. database query: executing in a thread pool. (when the query finishes, the query is completed and it true value is the result of the query.)
+
+2. RPC invocation: Wnen the server replies the future is completed and its value is the server's response.
+
+3. Timeout: when the time is up, the future is completed (value of "()" rust's basic value)
+
+4. A long-running CPU intense task: (running on a thread pool), its value is the return value of the task.
+
+5. Reading bytes from a socket: when the bytes are ready, the future is completed.
+
+> Futures are applicable to asynchronous events of all shapes and sizes.
