@@ -154,3 +154,12 @@ Reasons of using them:
 5. Reading bytes from a socket: when the bytes are ready, the future is completed.
 
 > Futures are applicable to asynchronous events of all shapes and sizes.
+
+8/15
+-------
+
+OTR: off the record messaging, a cryptographic protocol that provides encryption for instant messaging conversations (provides forward secrecy and malleable encryption.
+
+SSID: a case sensitive, 32 alphanumeric character unique identifier attached to the header of packets sent over a wireless local area network (wlan).
+
+Opsec: operations security.
