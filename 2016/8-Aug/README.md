@@ -163,3 +163,26 @@ OTR: off the record messaging, a cryptographic protocol that provides encryption
 SSID: a case sensitive, 32 alphanumeric character unique identifier attached to the header of packets sent over a wireless local area network (wlan).
 
 Opsec: operations security.
+
+8/16
+----------
+
+service set: a set consisting of all devices associated with a consumer or enterprise  (WLAN).
+
+BSSID (Basic Service Set Identification): a 48 bit identity used to identify a particular BSS (Basic Service Set) within an area. In infrastructure BSS networks, it is the MAC address of the access point (AP) and in independent BSS or adhoc networks, the BSSID is randomly generated.
+
+SSID: Service Set ID.
+
+Network cloaking: an attempt to provide wireless security by hiding the network name (SSID) from being broadcasted to the public.
+
+OTPW: One time password: developed for authentification in unix-like operating systems. A series of one-time passwords is created from a short set of characters and a set of one-time tokens.
+
+RSSI: received signal strength indicator: a measurement of power present in a received radio signal.
+
+RTS/CTS (request to Send / clear to send) used by networking protocol to reduce frame collisions.
+
+bcrypt: a password hashing function:
+
+* incorporates a salt to protect against rainbow table attacks.
+* adaptive function.
+* resistant to brute force search attacks even with increased computing power.
