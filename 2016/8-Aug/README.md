@@ -186,3 +186,115 @@ bcrypt: a password hashing function:
 * incorporates a salt to protect against rainbow table attacks.
 * adaptive function.
 * resistant to brute force search attacks even with increased computing power.
+
+Notes from High Performance Browswer Networking:
+-----
+
+WPO: (web performance optimization)
+
+Latency: the time it takes from the source sending the packet to the destination receiving it.
+
+Bandwidth: throughput of logical or physical communication path.
+
+common contributing components in latency (typical router):
+
+- propagation delay: time it takes for amessage to travel from sender to receiver (function of distance / time)
+- Transmission delay: time it takes to push all packets bits to the link (function of packet length and data rate)
+- processing delay: required time to process the packet header (checking for bit level errors and determining the packet's destination)
+- queueing delay: time a packet is on a queue before getting processed.
+
+Traceroute: a simple networking tool for identifying the routing path of the packet and the latency of each network hop in an IP network.
+
+
+Flow control is a mechanism to prevent sender from overwhelming the receiver with data that it may not be able to process.
+
+slow-start restart (SSR) mechanism: resets the congestion, the window is reset to a "safe" default.
+
+TCP uses packet loss as a feedback mechanism to help regulate its performance.
+
+Bandwidth-delay product (BDP): Product of link's capacity and its end-to-end delay.
+
+TCP is an adaptive protocol designed to be fair to all network peers and make the most efficient use of the underlying network.
+
+> The best way to optimize TCP is to tune how TCP senses the current network conditions and adapts its behavior based on the type and the requirements of the layers below and above it.
+
+
+
+> TCP connection reuse is critical to improve performance
+
+
+Performance: eliminating unecessary data transfers (n.1), eliminating unecessary resources or ensuring that the minimum number of bits is transferred by applying the appropriate compression algorithm.
+
+Locating the bits closer: (reduce latency of network roundtrips and significantly improve TCP performance.
+
+1. geo-distributing servers around the world.
+2. using a CDN
+
+
+
+
+##### Building blocks of UDP:
+
+User Datagram Protocol (UDP): (null protocol): a self contained, independent entity of data carrying efficient information to be routed from the source to the destination nodes and the transporting network.
+
+NAT: Network Address Translator: an interim solution to resolve the looming IPv4 address depletion problem (not being able to allocate a unique IP to every host.)
+
+> Solution: introduction of Nat devices at the edge of the network, each of which would be responsible for maintaining a table mapping of local IP and port tuples to one or more globally unique (public) IP and port tuples.
+
+Session Traversal Utilities (STUN): a protocol that allows the host application to discover the presence of a network address translator on the network and when present to obtain the allocated public IP and port tuple for the current connection.
+
+#### TLS
+
+A secure web application will leverage all 3 service:
+1. Encryption: to obfuscate what is sent from one host to another.
+2. Authentication: mechanism to verify the validity of provided identification material.
+3. Integrity: mechanism to detect message tampering and forgery.
+
+asymmetric key cryptography == public key cryptography: allows the peers to negotiate a shared secret key without having to establish any prior knowledge to each other (over an unencrypted channel).
+
+Unencrypted communication via HTTP: creates a large number of privacy, security and integrity vulnerabilities:
+
+- Interception
+- manipulation
+- impersonation
+- users credentials
+- history
+- identity
+- other sensitive information
+
+Ways to optimize:
+
+1. Optimizing connection reuse
+2. Leverage Early termination
+3. Enable HTTP Strict Transport Security (HSTS)
+3. Enable HTTP Public key Pinning (HPKP)
+4. Update site content to HTTPS
+
+Public key pinning enables a site to send an HTTP header that instructs the browser to remember ("pin") one or more certificates in its certificate chain. (ability to scope which certificates, or issuers, should be accepted by the browser on subsequent visits.
+
+
+#### Introduction to wireless networks
+
+Channel capacity: the maximum information rate
+
+C = BW * log2(1 + S/N) 
+
+* BW: available bandwidth
+* S: signal
+* N: noise
+
+factors that affect the performance of wireless networks:
+
+1. distance between receiver and sender
+2. background noise in current location
+3. interference from users in the same network
+4. interference from users in other nearby network
+5. available transmit power, both a receiver and sender
+6. processing power and the chosen modulation scheme
+
+#### Websocket protocol
+
+Consists of two high-level components:
+
+1. the opening HTTP handshake used to negotiate the parameters of the connection.
+2. a binary message framing mechanism to allow for a low overhead, message-based delivery of both text and binary data.
