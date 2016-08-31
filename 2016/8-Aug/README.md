@@ -298,3 +298,10 @@ Consists of two high-level components:
 
 1. the opening HTTP handshake used to negotiate the parameters of the connection.
 2. a binary message framing mechanism to allow for a low overhead, message-based delivery of both text and binary data.
+
+8/31
+-----
+Squid: a caching and forwarding proxy:
+
+1. speeding up a web server by caching repeated requests
+2. caching web, DNS, and other computer network lookups
