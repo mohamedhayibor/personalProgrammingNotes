@@ -1,6 +1,24 @@
 10/5 Notes on IOS
 --------
+### High level
 
+Levels (User -> os):
+
+	1. Cocoa Touch
+	2. Media
+	3. Core Services
+	4. Core OS
+
+
+Core OS: Osx kernel, BSD, Mach 3.0, sockets, security, power management, keychain access, certificates, file system, bonjour.
+
+Core Services: collections, core location, address Book, Net Services, Networking, Threading, File access, preferences, sqlite, URL utilities.
+
+Media: core audio, (jpeg, png, tiff), openAl, pdf, audio mixing, quartz, audio recording, core animation, video playback, openGL ES
+
+Cocoa touch: Multi-Touch, Alerts, Core Motion, Web view, view hierarchy, Map kit, localization, Image picker, controls, camera
+
+-----
 - UITableViewDelegate: the delegate UITableView object must adopt it. (optional methods of the protocol allow the delegate to manage selections, configure section headers and footers, help to delete and reorder cells, and perform actions.
 
 Many of its methods protocol take `NSIndexPath` object as parameters and return values.
