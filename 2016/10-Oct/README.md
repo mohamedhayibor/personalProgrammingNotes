@@ -71,3 +71,61 @@ Passing by value means that when you pass it, it copies it.
 > enums are like structs (passed by value)
 
 A closure is an inline function that captures the state of its environment.
+
+10/7
+------
+
+
+Constant pointers to a class (let) still can mutate by calling methods and changing properties When passed as an argument, does not make a copy (just passing a pointer to the same instance)
+
+* usually you will choose class over struct. struct tends to be more for fundamental types. Use of enum is situational (any time you have a type of data with discrete values).
+
+#### Methods
+All parameters to all functions have an internal and an external name.
+
+* The internal name is the name of the local variable you use inside the method.
+* The external name is what callers use when they call the method.
+
+> you can put `_` if you don't want callers to use an external name at all for a given parameter.
+
+Precede your func or var with the keyword override (To override).
+A method can be marked as final which will prevent subclasses from being able to override. (classes can also be marked final).
+
+
+Properties: 
+Lazy Initialization: A lazy property does not get initialized until someone accesses it. You can allocate an object, execute a closure, or call a method if you want.
+
+> satisfies the rule "you must initialize all your properties"
+
+Important classes: 
+
+* NSObject: Base class for all Objective-C classes
+* NSNumber
+* NSDate
+* NSData (a bag of bits)
+
+Initialization:
+
+1. By the time any init is done, all properties must have values (optionals can have the value `nil`)
+2. Two types of inits: a class: convenience and designated (ie not convenience)
+
+Inheriting init:
+
+* If you do not implement any designated inits, you'll inherit all of your superclass's designateds
+* If you override all of your superclass's designated inits, you'll inherit all its convenience inits
+* If you implement no inits, you'll inherit all your superclass's inits
+
+NSUserDefaults: A storage mechanism for property list data. It persists between launchings of your application.
+
+typealias: lets you create a type (a nametype that is excatly as some other name type).
+
+A UIView's initializer is different if it comes out of a storyboard.
+
+* init(frame: CGRect) // initializer if the UIVIew is created in code
+* init(frame: NSCoder) // initializer if the UIView comes out of a storyboard
+
+Another alternative to initializers in UIView: awakeFromNib() // only called when  the UIView came out of storyboard
+
+Mutability is done with NSMutableAttributedString.
+
+> NSAttributedString is not a String, nor an NSString: You can get its contents as an String/NSString with its string or mutableString property.
