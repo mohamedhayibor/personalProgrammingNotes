@@ -129,3 +129,26 @@ Another alternative to initializers in UIView: awakeFromNib() // only called whe
 Mutability is done with NSMutableAttributedString.
 
 > NSAttributedString is not a String, nor an NSString: You can get its contents as an String/NSString with its string or mutableString property.
+
+10/09
+------------
+Segues always create a new instance of an MVC:
+
+> When you segue in a navigation controller it will not segue to some old instance, it'll be new
+
+Preparing for a segue:
+
+When a segue happens, the view controller containing the instigator gets a chance to prepate the destination view controller to be segued to.
+
+Automatic Reference Counting (ARC): (Reference types classes are stored in the heap).
+
+> It counts references to each of them and when there are zero references, they get tossed.
+
+You can influence ARC by how you declare a reference-type: strong, weak, unowned.
+
+Protocols are a way to express an API more concisely.
+
+(Instead of forcing the caller of an API to pass a specific class, struct, or enum, an API can let callers pass any class/struct/enum that the caller wants but can require that they implement certain methods and/or properties that the API wants.
+
+> a protocol is a type
+
