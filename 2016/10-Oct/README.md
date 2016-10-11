@@ -152,3 +152,22 @@ Protocols are a way to express an API more concisely.
 
 > a protocol is a type
 
+10/11
+-------
+Multi-threading:
+
+Queues: can be serial (one at a time) or concurrent (multiple things going at once)
+
+Main queue: All UI activity must occur on this queue and this queue only. (non-ui activity that is time consuming must not occur on this queue).
+
+Most non-main-queue work will happen on a concurrent queue with a certain quality of service.
+
+```
+Q0S_CLASS_USER_INTERACTIVE // quick and high priority
+Q0S_CLASS_USER_INITIATED //   high priority, might take time
+Q0S_CLASS_UTILITY        // long running
+Q0S_CLASS_BACKGROUND     // user not concerned with prefetching
+let queue = dispatch_get_global_queue(<one of the above>, 0)  // 0 is a "reserved for future"
+```
+
+> Object-oriented API: NSOperationQueue and NSOperation
