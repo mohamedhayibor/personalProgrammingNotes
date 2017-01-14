@@ -327,3 +327,72 @@ lesserP  = liftP (<)
 ```
 
 > taking a function (> || <), and transforming it into another function that operates in a different context, is refered to as lifting into that context.
+
+1/13
+------
+
+idempotency: applying a function twice has the same result as applying it once.
+
+```hs
+class Arbitrary a where
+    arbitrary = Gen a
+```
+
+The generators run in a `Gen` environment. Which is a simple state-passing monad that is used to hide random number generator state that is threaded through the code.
+
+We can use do Syntax to write new generators that access to implicit random number source.
+
+Another approach to data generation is to generate values for one of the basic Haskell types and then translate those values into the type you're actually interested in.
+
+```hs
+instance Arbitrary Ternary a where
+    arbitrary      = do
+        n -> choose (0, 2) :: Gen Int
+        return $ case n of
+                      0 -> True
+                      1 -> False
+                      _ -> Unknown
+```
+
+> Higher order functions are the basic glue of reusable programming.
+
+Common design pattern: type constraints are pushed out to where they are actually needed.
+
+Within every given do-block, all actions must be the same type. You can't put regular values there (without let), because they aren't actions.
+
+> Functions like `putStrLn` aren't IO actions, they return IO actions.
+
+> You can't mix different kinds of actions in the same do block.
+
+IO perfoms the actions in order with IO side effects. Maybe, on the other hand, specifies that if any step is Nothing, the whole thing stops and exits with a Nothing.
+
+###### Data Structures
+
+Ways to deal with data indexed by a key: association lists and the `Map` type provided by `Data.Map`
+
+* all familiar list functions work with association lists
+* Map has considerable advantage over association lists
+
+Association lists are just normal list containing (key, value) tuples. Example `[(Integer, String)]`. Can retrie at an index with `lookup`:
+
+```hs
+myLookup :: a -> [(a, b)] -> Maybe b
+myLookup _ [] = Nothing
+myLookup key ((thisKey, thisValue):rest)
+    | key == thisKey   = thisValue
+    | otherwise        = myLookup key rest
+```
+
+* Maps give us the same capabilities as hash tables do in other languages (implemented with a self balanced tree)
+
+```hs
+let f = ("a" ++) . ("b" ++)
+-- f [] >  "ab"
+```
+
+Each partial application of (++) and (.) represents an append, but it doesn't actually perform the append. (Thecost of partial application is constant "many > linear"
+
+Monoid (requirements):
+
+1. An associative binary operator. Exple: `a * (b * c)` == `(a * b) * c`
+2. An identity value. Exple: `a * e == a`, `e * a = a`
