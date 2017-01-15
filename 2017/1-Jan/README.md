@@ -396,3 +396,99 @@ Monoid (requirements):
 
 1. An associative binary operator. Exple: `a * (b * c)` == `(a * b) * c`
 2. An identity value. Exple: `a * e == a`, `e * a = a`
+
+1/15
+-----
+###### Monads
+
+```hs
+(>>?) :: Maybe a -> (a -> Maybe b) -> Maybe b
+Nothing >>? _ = Nothing
+Just v  >>? f = f v
+```
+> As long as the result type of one function matches the parameter of the next, we can chain functions returning `Maybe` together indefinitely.
+
+(>>?) hide the details of whether `Nothing` gets returned or completely evaluated.
+
+> Monads helps with repeated behaviors by chaining functions one to the next.
+
+3 properties that makeup a monad
+
+* A type constructor m
+* A function of type `m a -> (a -> m b) -> m b` for chaining the output of one function into the input of another.
+* A function of type `a -> m a` for injecting a normal value into the chain, it wraps a type a with the type constructor m
+
+> monadic structure: passing around implicit data or shortcircuiting a chain of evaluations if one fails, to choose but two.
+
+```hs
+class Monad a where
+    -- chaining
+    (>>=) :: m a -> (a -> m b) -> m b
+    -- injecting
+    return :: a -> m a
+```
+
+(>>) performs chaining but ignores the value on the left
+
+```hs
+    (>>) :: ma -> m b -> m b
+    a >> f = a (>>=) \_ -> f
+```
+
+The second non core monad function is fail:
+
+```hs
+    fail :: String -> m a
+    fail = error
+```
+
+"is Monad": an instance of the `Monad` typeclass. Gives us the necessary monadic triple of type constructor, injection function, and chaining function.
+
+"Foo monad": a type Foo with a Monad typeclass.
+
+We can inject a value into a monad using `return`. We can extract a value from a monad using (>>=) but the function on the right, which can see an unwrapped value, has to wrap its own result back up again.
+
+When a computation in the chain fails, the subsequent production, chaining and consumption of Nothing values is cheap at runtime, but it is not free.
+
+
+(>>=) definition for lists:
+
+```hs
+instance Monad [] where
+    return x = [x]
+    xs >>= f = concat (map f xs)
+```
+
+(>>)
+
+```hs
+xs >> f = concat (map (\_ -> f) xs)
+fail _  = []
+```
+
+To eliminate boilerplate we can add directives to the top of our source file, before the module header:
+
+```hs
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+```
+
+> will broaden our ability to derive typeclass instances, the extensions can automatically make our new type an instance of that typeclass.
+
+Monads provide a powerful way to build computations with effects.
+
+> One of the principal reasons that we use monads is that they let us specify an ordering for effects.
+
+##### Error Handling
+
+The `Either` type is similar to the Maybe type, with one difference: it can carry attached data both for an error and a success.
+
+> `Left` indicates a error, `Right` indicates a success.
+
+handle: when you wish to perform one action if a piece of code completes without an exception, and a different action otherwise.
+
+Haskell automatically indicates a non-successful exit whenever a program is aborted by an exception.
+
+
+##### Using Databases
+
+A transaction is designed to ensure that all components of a modification get applied, or that none of them do. Can also prevent other processes accessing the same database from seeing partial data from modifications that are in progress.
