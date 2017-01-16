@@ -492,3 +492,18 @@ Haskell automatically indicates a non-successful exit whenever a program is abor
 ##### Using Databases
 
 A transaction is designed to ensure that all components of a modification get applied, or that none of them do. Can also prevent other processes accessing the same database from seeing partial data from modifications that are in progress.
+
+
+1/16
+----
+
+Reverse proxy server: typically sits behind the firewall in a private network and directs client requests to the appropriate backend server. Common uses:
+
+Load balancing: "traffic cop" to maximize speed and capability utilization while ensuring no one server is overloaded. (If a server is down, the load balancer redirects traffic to the remaining online servers.
+
+Web acceleration: Reverse proxies can compress inbound and outbound data, as well as cache commonly requested content, both of which speed up the flow of traffic between clients and servers. (could perform other actions such as SSL encryption..)
+
+Security and anonimity: By intercepting requests headed for your backend servers, it protects and acts as an additional defense against security attacks. (Also, ensures that multiple servers can be accessed from a single record locator or URL regardless of the structure of your LAN).
+
+[link](https://www.nginx.com/resources/glossary/reverse-proxy-server/)
+
